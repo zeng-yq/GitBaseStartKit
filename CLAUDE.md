@@ -1,158 +1,156 @@
-# Development Guidelines
+# 开发指南 (Development Guidelines)
 
-## Philosophy
+## 核心理念 (Philosophy)
 
-### Core Beliefs
+### 核心信念
 
-- **Incremental progress over big bangs** - Small changes that compile and pass tests
-- **Learning from existing code** - Study and plan before implementing
-- **Pragmatic over dogmatic** - Adapt to project reality
-- **Clear intent over clever code** - Be boring and obvious
+- **循序渐进，拒绝“大爆炸”** - 专注于那些可编译并通过测试的小幅变更。
+- **借鉴现有代码** - 动手实现前，先研究现有代码并制定计划。
+- **实用至上，拒绝教条** - 根据项目的实际情况灵活调整。
+- **意图清晰，拒绝炫技** - 代码应朴实无华，逻辑一目了然。
 
-### Simplicity Means
+### 何为简洁
 
-- Single responsibility per function/class
-- Avoid premature abstractions
-- No clever tricks - choose the boring solution
-- If you need to explain it, it's too complex
+- 每个函数或类仅承担单一职责。
+- 避免过早抽象。
+- 拒绝奇技淫巧 —— 选择最朴实、最无聊的解决方案。
+- 如果一段代码需要解释才能看懂，那就说明它太复杂了。
 
-### Permission Management
-Except for file deletion and database operations, all other operations do not require my confirmation.
+### 权限管理
+除文件删除和数据库操作外，执行其他所有操作均无需我（用户）确认。
 
-## Process
+## 开发流程 (Process)
 
-### 1. Planning & Staging
+### 1. 规划与分阶段 (Planning & Staging)
 
-Break complex work into 3-5 stages. Document in `IMPLEMENTATION_PLAN.md`:
+将复杂工作拆分为 3-5 个阶段。在 `IMPLEMENTATION_PLAN.md` 文件中记录：
 
 ```markdown
-## Stage N: [Name]
-**Goal**: [Specific deliverable]
-**Success Criteria**: [Testable outcomes]
-**Tests**: [Specific test cases]
+## Stage N: [阶段名称]
+**Goal**: [具体的交付成果]
+**Success Criteria**: [可测试的产出结果]
+**Tests**: [具体的测试用例]
 **Status**: [Not Started|In Progress|Complete]
 ```
 
-- Update status as you progress
-- Remove file when all stages are done
+- 随着进度推进更新状态。
+- 所有阶段完成后，删除该文件。
 
-### 2. Implementation Flow
+### 2. 实施工作流 (Implementation Flow)
+1. **理解 (Understand)** - 研究代码库中的现有模式。
+2. **测试 (Test)** - 先编写测试（红灯阶段）。
+3. **实现 (Implement)** - 编写能通过测试的最小代码量（绿灯阶段）。
+4. **重构 (Refactor)** - 在保持测试通过的前提下清理代码。
+5. **提交 (Commit)** - 提交信息需清晰，并关联到开发计划。
 
-1. **Understand** - Study existing patterns in codebase
-2. **Test** - Write test first (red)
-3. **Implement** - Minimal code to pass (green)
-4. **Refactor** - Clean up with tests passing
-5. **Commit** - With clear message linking to plan
 
+### 3. 遇到瓶颈时（尝试 3 次后）
 
-### 3. When Stuck (After 3 Attempts)
+**关键原则**：每个问题最多尝试 3 次，如果未解决立即停止。
 
-**CRITICAL**: Maximum 3 attempts per issue, then STOP.
+1. **记录失败详情**：
+  - 尝试过的方案
+  - 具体的错误信息
+  - 你认为失败的原因
 
-1. **Document what failed**:   
-  - What you tried   
-  - Specific error messages   
-  - Why you think it failed
+2. **调研替代方案**：
+  - 寻找 2-3 个类似的实现案例
+  - 记录不同方法的差异
 
-2. **Research alternatives**:   
-  - Find 2-3 similar implementations   
-  - Note different approaches used
+3. **审视基础假设**：
+  - 抽象层级是否正确？
+  - 这个问题能否拆解为更小的问题？
+  - 是否存在完全不同的简便路径？
 
-3. **Question fundamentals**:   
-  - Is this the right abstraction level?   
-  - Can this be split into smaller problems?   
-  - Is there a simpler approach entirely?
+4. **尝试不同切入点**：
+  - 是否有其他库或框架特性可用？
+  - 是否可以更换架构模式？
+  - 尝试做减法（移除抽象）而不是做加法？
 
-4. **Try different angle**:   
-  - Different library/framework feature?   
-  - Different architectural pattern?   
-  - Remove abstraction instead of adding?
+## 技术标准 (Technical Standards)
 
-## Technical Standards
+### 架构原则
 
-### Architecture Principles
+- **组合优于继承** - 使用依赖注入 (Dependency Injection)。
+- **接口优于单例** - 提升可测试性和灵活性。
+- **显式优于隐式** - 确保数据流和依赖关系清晰可见。
+- **尽可能采用测试驱动** - 绝不禁用测试，而是修复它们。
 
-- **Composition over inheritance** - Use dependency injection
-- **Interfaces over singletons** - Enable testing and flexibility
-- **Explicit over implicit** - Clear data flow and dependencies
-- **Test-driven when possible** - Never disable tests, fix them
+### 代码质量
 
-### Code Quality
+- **每次提交必须**：
+  - 编译成功
+  - 通过所有现有测试
+  - 包含新功能的测试
+  - 遵循项目的格式化和 Lint 规范
 
-- **Every commit must**:  
-  - Compile successfully  
-  - Pass all existing tests  
-  - Include tests for new functionality  
-  - Follow project formatting/linting
+- **提交之前**：
+  - 运行格式化器 (formatters) 和代码检查工具 (linters)
+  - 自我审查代码变更
+  - 确保提交信息解释了修改的“原因 (why)”
 
-- **Before committing**:  
-  - Run formatters/linters  
-  - Self-review changes  
-  - Ensure commit message explains "why"
+### 错误处理
 
-### Error Handling
+- 快速失败 (Fail fast) 并提供描述性错误信息。
+- 包含调试所需的上下文。
+- 在合适的层级处理错误。
+- 绝不静默吞没异常。
 
-- Fail fast with descriptive messages
-- Include context for debugging
-- Handle errors at appropriate level
-- Never silently swallow exceptions
+## 决策框架 (Decision Framework)
 
-## Decision Framework
+当存在多种可行方案时，依据以下标准进行选择：
 
-When multiple valid approaches exist, choose based on:
+1. **可测试性 (Testability)** - 这个方案容易测试吗？
+2. **可读性 (Readability)** - 6 个月后，其他人能看懂这段代码吗？
+3. **一致性 (Consistency)** - 是否符合项目的现有模式？
+4. **简洁性 (Simplicity)** - 这是能解决问题的最简方案吗？
+5. **可逆性 (Reversibility)** - 未来修改或撤销的难度有多大？
 
-1. **Testability** - Can I easily test this?
-2. **Readability** - Will someone understand this in 6 months?
-3. **Consistency** - Does this match project patterns?
-4. **Simplicity** - Is this the simplest solution that works?
-5. **Reversibility** - How hard to change later?
+## 项目集成 (Project Integration)
+### 熟悉代码库
 
-## Project Integration
+- 找到 3 个类似的功能或组件。
+- 识别通用的模式和约定。
+- 尽可能使用相同的库或工具类。
+- 遵循现有的测试模式。
 
-### Learning the Codebase
+## 工具链
 
-- Find 3 similar features/components
-- Identify common patterns and conventions
-- Use same libraries/utilities when possible
-- Follow existing test patterns
+- 使用项目现有的构建系统。
+- 使用项目现有的测试框架。
+- 使用项目现有的格式化/Lint 设置。
+- 如无充分理由，不要引入新工具。
 
-### Tooling
+## 质量门禁 (Quality Gates)
 
-- Use project's existing build system
-- Use project's test framework
-- Use project's formatter/linter settings
-- Don't introduce new tools without strong justification
+### 完成的定义 (Definition of Done)
 
-## Quality Gates
+- [ ] 测试已编写并通过
+- [ ] 代码遵循项目约定
+- [ ] 无 Linter/Formatter 警告
+- [ ] 提交信息用中文，且清晰明确
+- [ ] 实现内容与计划一致
+- [ ] 不存在未关联 Issue 编号的 TODO
 
-### Definition of Done
+### 测试指南
 
-- [ ] Tests written and passing
-- [ ] Code follows project conventions
-- [ ] No linter/formatter warnings
-- [ ] Commit messages are clear
-- [ ] Implementation matches plan
-- [ ] No TODOs without issue numbers
+- 测试行为，而非实现细节。
+- 尽可能每个测试只包含一个断言。
+- 测试名称应清晰描述测试场景。
+- 使用现有的测试工具或辅助函数。
+- 测试结果必须具有确定性 (Deterministic)。
 
-### Test Guidelines
+## 重要提醒 (Important Reminders)
 
-- Test behavior, not implementation
-- One assertion per test when possible
-- Clear test names describing scenario
-- Use existing test utilities/helpers
-- Tests should be deterministic
+**绝对禁止 (NEVER)**：
+- 使用 --no-verify 跳过提交钩子 (commit hooks)。
+- 禁用测试来规避错误（必须修复测试）。
+- 提交无法编译的代码。
+- 凭空假设 —— 务必通过现有代码进行验证。
 
-## Important Reminders
-
-**NEVER**:
-- Use `--no-verify` to bypass commit hooks
-- Disable tests instead of fixing them
-- Commit code that doesn't compile
-- Make assumptions - verify with existing code
-
-**ALWAYS**:
-- Commit working code incrementally
-- Update plan documentation as you go
-- Learn from existing implementations
-- Stop after 3 failed attempts and reassess
-- Always use context7 when I need code generation, setup or configuration steps, orlibrary/API documentation. This means you should automatically use the Context7 MCPtools to resolve library id and get library docs without me having to explicitly ask.
+**务必坚持 (ALWAYS)**：
+- 增量提交可工作的代码。
+- 随时更新计划文档。
+- 从现有实现中学习。
+- 失败 3 次后立即停止并重新评估。
+- 始终使用 context7：当我需要代码生成、环境设置/配置步骤或库/API 文档时。这意味着你应该自动使用 Context7 MCP 工具来解析库 ID 并获取库文档，而无需我显式要求。
