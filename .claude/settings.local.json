@@ -11,7 +11,8 @@
       "Bash(findstr:*)",
       "Bash(taskkill:*)",
       "Bash(.\\kill-3000.bat:*)",
-      "Bash(cmd:*)"
+      "Bash(cmd:*)",
+      "Bash(find:*)"
     ]
   }
 }

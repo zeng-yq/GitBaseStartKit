@@ -59,7 +59,17 @@ export function getSortedPostsData() {
 }
 
 export async function getPostData(slug) {
+  if (!slug) {
+    throw new Error('Slug is required');
+  }
+
   const fullPath = path.join(postsDirectory, `${slug}.md`);
+
+  // Check if file exists
+  if (!fs.existsSync(fullPath)) {
+    throw new Error(`Post not found: ${slug}.md at path ${fullPath}`);
+  }
+
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
   // Use gray-matter to parse the post metadata section

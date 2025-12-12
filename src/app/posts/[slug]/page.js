@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 
 export async function generateMetadata({ params }) {
-  const postData = await getPostData(params.slug);
+  const { slug } = await params;
+  const postData = await getPostData(slug);
   return {
     title: `${postData.title}`,
     description: postData.description || `Read about ${postData.title} on GitBase`,
@@ -11,7 +12,8 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Post({ params }) {
-  const postData = await getPostData(params.slug);
+  const { slug } = await params;
+  const postData = await getPostData(slug);
   
   return (
     <article className="container mx-auto px-4 py-12 max-w-3xl">

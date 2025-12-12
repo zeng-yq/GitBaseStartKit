@@ -16,7 +16,7 @@ import { getLocaleFromPath, addLocaleToPath } from '@/lib/i18n-config'
 export default function ArticleList({ articles, showMoreLink = true }) {
   const [categories, setCategories] = useState([])
   const pathname = usePathname()
-  const currentLocale = getLocaleFromPath(pathname)
+  const currentLocale = getLocaleFromPath(pathname) || 'en'  // Default to 'en' if no locale in path
 
   useEffect(() => {
     // Fetch categories

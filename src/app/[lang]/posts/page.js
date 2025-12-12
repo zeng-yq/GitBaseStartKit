@@ -8,7 +8,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const dict = await getDictionary(params.lang)
+  const { lang } = await params
+  const dict = await getDictionary(lang)
 
   return {
     title: dict.articles.title,
@@ -17,7 +18,8 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Articles({ params }) {
-  const dict = await getDictionary(params.lang)
+  const { lang } = await params
+  const dict = await getDictionary(lang)
   const allPostsData = getSortedPostsData()
 
   return (

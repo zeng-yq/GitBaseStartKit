@@ -10,7 +10,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const postData = await getPostData(params.slug)
+  const { slug, lang } = await params
+  const postData = await getPostData(slug)
   return {
     title: `${postData.title}`,
     description: postData.description || `Read about ${postData.title} on GitBase`,
@@ -18,11 +19,12 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Post({ params }) {
-  const dict = await getDictionary(params.lang)
-  const postData = await getPostData(params.slug)
+  const { slug, lang } = await params
+  const dict = await getDictionary(lang)
+  const postData = await getPostData(slug)
 
-  const homePath = addLocaleToPath('/', params.lang)
-  const postsPath = addLocaleToPath('/posts', params.lang)
+  const homePath = addLocaleToPath('/', lang)
+  const postsPath = addLocaleToPath('/posts', lang)
 
   return (
     <article className="container mx-auto px-4 py-12 max-w-3xl">

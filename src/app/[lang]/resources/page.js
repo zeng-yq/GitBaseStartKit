@@ -9,7 +9,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const dict = await getDictionary(params.lang)
+  const { lang } = await params
+  const dict = await getDictionary(lang)
 
   return {
     title: dict.resources.title,
@@ -18,7 +19,8 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Resources({ params }) {
-  const dict = await getDictionary(params.lang)
+  const { lang } = await params
+  const dict = await getDictionary(lang)
   const resourcesPath = path.join(process.cwd(), 'data', 'json', 'resources.json')
   const allResources = JSON.parse(fs.readFileSync(resourcesPath, 'utf8'))
   // Filter out deleted resources
