@@ -1,10 +1,9 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { Layout } from '@/components/Layout'
 import { Metadata } from 'next'
+import { Layout } from '@/components/Layout'
 
 const inter = Inter({ subsets: ['latin'] })
-
 
 export const metadata: Metadata = {
   title: {
@@ -20,7 +19,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html>
       <body className={inter.className}>
         <Layout>{children}</Layout>
       </body>

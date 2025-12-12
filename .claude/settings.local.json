@@ -6,7 +6,12 @@
       "Bash(npm outdated)",
       "Bash(npm update @octokit/rest @radix-ui/react-dropdown-menu @radix-ui/react-slot @tailwindcss/typography class-variance-authority jsonwebtoken lucide-react swr tailwind-merge typescript @types/node @types/react @types/react-dom autoprefixer globals postcss)",
       "Bash(npm run build:*)",
-      "Bash(npm run dev)"
+      "Bash(npm run dev)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)",
+      "Bash(.\\kill-3000.bat:*)",
+      "Bash(cmd:*)"
     ]
   }
 }
