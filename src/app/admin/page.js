@@ -131,10 +131,7 @@ export default function AdminPage() {
             垃圾箱
           </Button>
         </Link>
-        <Link href="/admin/ai-dev">
-          <Button variant="outline">AI 功能开发中心</Button>
-        </Link>
-      </div>
+        </div>
       <h2 className="text-xl font-bold mb-4">Resource Management</h2>
       <Table>
         <TableHeader>
