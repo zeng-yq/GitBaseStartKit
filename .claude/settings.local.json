@@ -12,7 +12,8 @@
       "Bash(taskkill:*)",
       "Bash(.\\kill-3000.bat:*)",
       "Bash(cmd:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(node:*)"
     ]
   }
 }

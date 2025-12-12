@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { Octokit } from '@octokit/rest';
 import matter from 'gray-matter';
+import fs from 'fs';
+import path from 'path';
 
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN
@@ -11,21 +13,43 @@ const repo = process.env.GITHUB_REPO;
 const articlesJsonPath = 'data/json/articles.json';
 const mdFolderPath = 'data/md';
 
+// Local paths
+const localArticlesJsonPath = path.join(process.cwd(), 'data', 'json', 'articles.json');
+const localMdFolderPath = path.join(process.cwd(), 'data', 'md');
+
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const sync = searchParams.get('sync');
-  const path = searchParams.get('path');
+  const pathParam = searchParams.get('path');
   const category = searchParams.get('category');
   const includeDeleted = searchParams.get('includeDeleted') === 'true';
 
   try {
-    if (path) {
+    if (pathParam) {
       // Fetch single article
+      if (!owner || !repo) {
+        // Use local file
+        try {
+          const fullPath = path.join(process.cwd(), decodeURIComponent(pathParam));
+          const content = fs.readFileSync(fullPath, 'utf8');
+          const { data: frontMatter, content: articleContent } = matter(content);
+
+          return NextResponse.json({
+            ...frontMatter,
+            content: articleContent,
+            path: pathParam,
+          });
+        } catch (error) {
+          console.error('Error fetching local article:', error);
+          return NextResponse.json({ error: 'Failed to fetch article' }, { status: 500 });
+        }
+      }
+
       try {
         const { data } = await octokit.repos.getContent({
           owner,
           repo,
-          path: decodeURIComponent(path),
+          path: decodeURIComponent(pathParam),
         });
 
         const content = Buffer.from(data.content, 'base64').toString('utf8');
@@ -41,17 +65,35 @@ export async function GET(request) {
         return NextResponse.json({ error: 'Failed to fetch article' }, { status: 500 });
       }
     } else if (sync === 'true') {
-      await syncArticles();
+      if (owner && repo) {
+        await syncArticles();
+      } else {
+        await syncLocalArticles();
+      }
     }
 
-    const { data } = await octokit.repos.getContent({
-      owner,
-      repo,
-      path: articlesJsonPath,
-    });
+    // Get articles
+    let articles;
+    if (!owner || !repo) {
+      // Use local file
+      try {
+        const content = fs.readFileSync(localArticlesJsonPath, 'utf8');
+        articles = JSON.parse(content);
+      } catch (error) {
+        console.error('Error reading local articles.json:', error);
+        return NextResponse.json({ error: 'Failed to fetch articles' }, { status: 500 });
+      }
+    } else {
+      // Use GitHub
+      const { data } = await octokit.repos.getContent({
+        owner,
+        repo,
+        path: articlesJsonPath,
+      });
 
-    const content = Buffer.from(data.content, 'base64').toString('utf8');
-    let articles = JSON.parse(content);
+      const content = Buffer.from(data.content, 'base64').toString('utf8');
+      articles = JSON.parse(content);
+    }
 
     // Filter out deleted articles unless explicitly requested
     if (!includeDeleted) {
@@ -84,7 +126,11 @@ export async function POST(request) {
     await updateMdFile(article);
 
     // Sync articles
-    await syncArticles();
+    if (!owner || !repo) {
+      await syncLocalArticles();
+    } else {
+      await syncArticles();
+    }
 
     return NextResponse.json({ message: 'Article updated successfully' });
   } catch (error) {
@@ -150,8 +196,41 @@ async function syncArticles() {
       sha: currentFile.sha,
     });
 
+    // Also update local file
+    fs.writeFileSync(localArticlesJsonPath, JSON.stringify(articles, null, 2));
+
   } catch (error) {
     console.error('Error syncing articles:', error);
+    throw error;
+  }
+}
+
+async function syncLocalArticles() {
+  try {
+    // Get all MD files from local directory
+    const mdFiles = fs.readdirSync(localMdFolderPath).filter(file => file.endsWith('.md'));
+
+    const articles = mdFiles.map(file => {
+      const filePath = path.join(localMdFolderPath, file);
+      const content = fs.readFileSync(filePath, 'utf8');
+      const { data: frontMatter } = matter(content);
+      const stats = fs.statSync(filePath);
+
+      return {
+        title: frontMatter.title,
+        description: frontMatter.description,
+        date: frontMatter.date,
+        category: frontMatter.category || null,
+        lastModified: stats.mtime.toISOString(),
+        path: `data/md/${file}`,
+      };
+    });
+
+    // Update local articles.json
+    fs.writeFileSync(localArticlesJsonPath, JSON.stringify(articles, null, 2));
+    console.log('Local articles synced successfully');
+  } catch (error) {
+    console.error('Error syncing local articles:', error);
     throw error;
   }
 }
@@ -289,33 +368,53 @@ export async function PATCH(request) {
 
 async function updateMdFile(article) {
   try {
-    const { data: currentFile } = await octokit.repos.getContent({
-      owner,
-      repo,
-      path: article.path,
-    });
+    if (!owner || !repo) {
+      // Update local file
+      const fullPath = path.join(process.cwd(), article.path);
+      const currentContent = fs.readFileSync(fullPath, 'utf8');
+      const { data: frontMatter } = matter(currentContent);
 
-    const currentContent = Buffer.from(currentFile.content, 'base64').toString('utf8');
-    const { data: frontMatter, content: articleContent } = matter(currentContent);
+      const updatedFrontMatter = {
+        ...frontMatter,
+        title: article.title,
+        description: article.description,
+        category: article.category !== undefined ? article.category : frontMatter.category,
+        lastModified: new Date().toISOString(),
+      };
 
-    const updatedFrontMatter = {
-      ...frontMatter,
-      title: article.title,
-      description: article.description,
-      category: article.category !== undefined ? article.category : frontMatter.category,
-      lastModified: new Date().toISOString(),
-    };
+      const updatedContent = matter.stringify(article.content, updatedFrontMatter);
+      fs.writeFileSync(fullPath, updatedContent);
+      console.log(`Updated local article: ${article.path}`);
+    } else {
+      // Update GitHub file
+      const { data: currentFile } = await octokit.repos.getContent({
+        owner,
+        repo,
+        path: article.path,
+      });
 
-    const updatedContent = matter.stringify(article.content, updatedFrontMatter);
+      const currentContent = Buffer.from(currentFile.content, 'base64').toString('utf8');
+      const { data: frontMatter, content: articleContent } = matter(currentContent);
 
-    await octokit.repos.createOrUpdateFileContents({
-      owner,
-      repo,
-      path: article.path,
-      message: `Update article: ${article.title}`,
-      content: Buffer.from(updatedContent).toString('base64'),
-      sha: currentFile.sha,
-    });
+      const updatedFrontMatter = {
+        ...frontMatter,
+        title: article.title,
+        description: article.description,
+        category: article.category !== undefined ? article.category : frontMatter.category,
+        lastModified: new Date().toISOString(),
+      };
+
+      const updatedContent = matter.stringify(article.content, updatedFrontMatter);
+
+      await octokit.repos.createOrUpdateFileContents({
+        owner,
+        repo,
+        path: article.path,
+        message: `Update article: ${article.title}`,
+        content: Buffer.from(updatedContent).toString('base64'),
+        sha: currentFile.sha,
+      });
+    }
 
   } catch (error) {
     console.error('Error updating MD file:', error);

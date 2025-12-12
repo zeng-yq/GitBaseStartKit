@@ -1,52 +1,52 @@
 # GitBase
 
-[GitBase](https://gitbase.app/) is an open-source dynamic website solution without a traditional database, built with Next.js, Tailwind CSS, and Shadcn/UI. It leverages GitHub as a content management system, providing a seamless way to create and manage website content.
+[GitBase](https://gitbase.app/) 是一个开源的动态网站解决方案，无需传统数据库，采用 Next.js、Tailwind CSS 和 Shadcn/UI 构建。它利用 GitHub 作为内容管理系统，为创建和管理网站内容提供了无缝的方式。
 
 ![GitBase](https://toimg.xyz/file/5aa892c8e8385232fcdf3.png)
 
 
-## Deploy on Vercel
+## 在 Vercel 上部署
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fqiayue%2Fgitbase&project-name=GitBase&repository-name=GitBase&external-id=https%3A%2F%2Fgithub.com%2Fqiayue%2Fgitbase%2Ftree%2Fmain)
+[![使用 Vercel 部署](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fqiayue%2Fgitbase&project-name=GitBase&repository-name=GitBase&external-id=https%3A%2F%2Fgithub.com%2Fqiayue%2Fgitbase%2Ftree%2Fmain)
 
 
-## Features
+## 功能特性
 
-- **Database-free Architecture**: Utilizes GitHub for content storage and management.
-- **Dynamic Content**: Renders content dynamically using Next.js server-side rendering.
-- **Markdown Support**: Write your content in Markdown format for easy editing and version control.
-- **Admin Interface**: Built-in admin panel for content management.
-- **AI-Powered Feature Development**: Revolutionary AI development center that generates code from natural language requests.
-- **Self-Evolving CMS**: The website can grow and add features autonomously through AI.
-- **Multi-language Support**: Built-in internationalization with subdirectory routing (en, zh, ja).
-- **Smart Language Detection**: Automatic browser language detection with non-intrusive suggestions.
-- **Category System**: Organize articles and resources with visual category badges.
-- **Responsive Design**: Fully responsive design using Tailwind CSS.
-- **SEO Friendly**: Optimized for search engines with dynamic metadata.
-- **Easy Deployment**: Simple deployment process to Vercel.
+- **无数据库架构**：利用 GitHub 进行内容存储和管理。
+- **动态内容**：使用 Next.js 服务端渲染动态呈现内容。
+- **Markdown 支持**：以 Markdown 格式编写内容，便于编辑和版本控制。
+- **管理界面**：内置内容管理面板。
+- **AI 驱动的功能开发**：革命性的 AI 开发中心，可从自然语言请求生成代码。
+- **自进化 CMS**：网站可通过 AI 自主增长并添加功能。
+- **多语言支持**：内置国际化支持，采用子目录路由（en、zh、ja）。
+- **智能语言检测**：自动浏览器语言检测，提供非侵入式建议。
+- **分类系统**：通过可视化分类标签组织文章和资源。
+- **响应式设计**：使用 Tailwind CSS 实现完全响应式设计。
+- **SEO 友好**：针对搜索引擎优化，具有动态元数据。
+- **简易部署**：简化到 Vercel 的部署流程。
 
-## Prerequisites
+## 前提条件
 
-- Node.js (version 14 or later)
-- npm (comes with Node.js)
+- Node.js（版本 14 或更高）
+- npm（随 Node.js 一起提供）
 - Git
-- GitHub account
-- Vercel account (for deployment)
+- GitHub 账户
+- Vercel 账户（用于部署）
 
-## Installation
+## 安装
 
-1. Clone the repository:
+1. 克隆仓库：
    ```
    git clone https://github.com/qiayue/gitbase.git
    cd gitbase
    ```
 
-2. Install dependencies:
+2. 安装依赖：
    ```
    npm install
    ```
 
-3. Create a `.env.local` file in the root directory and add the following:
+3. 在根目录下创建一个 `.env.local` 文件，并添加以下内容：
    ```
    GITHUB_TOKEN=your_github_personal_access_token
    GITHUB_OWNER=your_github_username
@@ -57,208 +57,208 @@
    ACCESS_PASSWORD=your_secure_access_password
    ```
 
-4. Set up your GitHub repository:
-   - Create a new repository on GitHub
-   - Create two folders in the repository: `data/json` and `data/md`
-   - In `data/json`, create a file named `resources.json` with an empty array: `[]`
+4. 设置 GitHub 仓库：
+   - 在 GitHub 上创建一个新仓库
+   - 在仓库中创建两个文件夹：`data/json` 和 `data/md`
+   - 在 `data/json` 中创建一个名为 `resources.json` 的文件，内容为空数组：`[]`
 
-5. Run the development server:
+5. 运行开发服务器：
    ```
    npm run dev
    ```
 
-Visit `http://localhost:3000` to see your GitBase instance running locally.
+访问 `http://localhost:3000` 查看本地运行的 GitBase 实例。
 
-## Deployment
+## 部署
 
-1. Push your code to GitHub.
-2. Log in to Vercel and create a new project from your GitHub repository.
-3. Configure the environment variables in Vercel:
-   - `GITHUB_TOKEN` - Your GitHub personal access token
-   - `GITHUB_OWNER` - Your GitHub username
-   - `GITHUB_REPO` - Your repository name
-   - `JWT_SECRET` - A secure random string (at least 32 characters)
-   - `DOMAIN` - Your production domain (e.g., yourdomain.com)
-   - `ACCESS_USERNAME` - Admin username for login
-   - `ACCESS_PASSWORD` - Admin password for login
-4. Deploy the project.
+1. 将代码推送到 GitHub。
+2. 登录 Vercel 并从 GitHub 仓库创建一个新项目。
+3. 在 Vercel 中配置环境变量：
+   - `GITHUB_TOKEN` - GitHub 个人访问令牌
+   - `GITHUB_OWNER` - GitHub 用户名
+   - `GITHUB_REPO` - 仓库名称
+   - `JWT_SECRET` - 安全随机字符串（至少 32 个字符）
+   - `DOMAIN` - 生产域名（例如，yourdomain.com）
+   - `ACCESS_USERNAME` - 登录的管理员用户名
+   - `ACCESS_PASSWORD` - 登录的管理员密码
+4. 部署项目。
 
-For a detailed deployment guide, please refer to our [Installation and Deployment Guide](https://gitbase.app/posts/gitbase-install-guide).
+有关详细部署指南，请参阅我们的[安装和部署指南](https://gitbase.app/posts/gitbase-install-guide)。
 
-## Usage
+## 使用
 
-- Access the admin panel by navigating to `/login` and entering your `ACCESS_USERNAME` and `ACCESS_PASSWORD`.
-- Create and edit articles through the admin interface at `/admin`.
-- Manage resources in the admin panel.
-- All changes are automatically synced with your GitHub repository.
-- Admin session expires after 1 hour for security.
+- 通过导航到 `/login` 并输入 `ACCESS_USERNAME` 和 `ACCESS_PASSWORD` 访问管理面板。
+- 通过管理界面在 `/admin` 创建和编辑文章。
+- 在管理面板中管理资源。
+- 所有更改都会自动与 GitHub 仓库同步。
+- 管理员会话在 1 小时后过期以确保安全。
 
-## AI Feature Development Center
+## AI 功能开发中心
 
-GitBase includes a revolutionary **AI-Powered Feature Development Center** that allows your website to evolve and add new features autonomously. This feature leverages Claude AI through OpenRouter to generate code from natural language requests.
+GitBase 包含一个革命性的 **AI 驱动的功能开发中心**，允许您的网站自主进化并添加新功能。此功能通过 OpenRouter 的 Claude AI 从自然语言请求生成代码。
 
-### How It Works
+### 工作原理
 
-1. **Describe Your Feature**: Write what you want in plain English (or any language)
-2. **AI Analyzes**: The system analyzes your project structure via GitHub API
-3. **Code Generation**: Claude AI generates the necessary code modifications
-4. **Review Changes**: Preview all file changes with a visual diff viewer
-5. **One-Click Deploy**: Batch commit all changes to GitHub using Git Trees API
-6. **Instant Update**: Your website immediately has the new feature
+1. **描述您的功能**：用纯文本（或任何语言）编写您想要的内容
+2. **AI 分析**：系统通过 GitHub API 分析您的项目结构
+3. **代码生成**：Claude AI 生成必要的代码修改
+4. **审查更改**：使用视觉差异查看器预览所有文件更改
+5. **一键部署**：使用 Git Trees API 批量提交所有更改到 GitHub
+6. **即时更新**：您的网站立即具有新功能
 
-### Setup Instructions
+### 设置说明
 
-#### 1. Get OpenRouter API Key
+#### 1. 获取 OpenRouter API 密钥
 
-1. Visit [OpenRouter.ai](https://openrouter.ai)
-2. Sign up for an account
-3. Navigate to API Keys section
-4. Generate a new API key (starts with `sk-or-v1-...`)
+1. 访问 [OpenRouter.ai](https://openrouter.ai)
+2. 注册一个账户
+3. 导航到 API 密钥部分
+4. 生成一个新的 API 密钥（以 `sk-or-v1-...` 开头）
 
-#### 2. Create GitHub Personal Access Token
+#### 2. 创建 GitHub 个人访问令牌
 
-1. Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
-2. Click "Generate new token (classic)"
-3. Give it a descriptive name (e.g., "GitBase AI Dev")
-4. Select the following scopes:
-   - ✅ `repo` (Full control of private repositories)
-5. Click "Generate token"
-6. **Important**: Copy the token immediately (you won't see it again)
+1. 转到 GitHub 设置 → 开发者设置 → 个人访问令牌 → 令牌（经典）
+2. 点击“生成新令牌（经典）”
+3. 给它一个描述性的名称（例如，“GitBase AI Dev”）
+4. 选择以下范围：
+   - ✅ `repo`（对私有仓库的完全控制）
+5. 点击“生成令牌”
+6. **重要**：立即复制令牌（您将无法再次看到它）
 
-#### 3. Configure AI Development Center
+#### 3. 配置 AI 开发中心
 
-1. Log in to your GitBase admin panel (`/login`)
-2. Navigate to **AI Feature Development Center** (`/admin/ai-dev`)
-3. Click the **"Configuration"** button
-4. Enter the following information:
+1. 登录到您的 GitBase 管理面板（`/login`）
+2. 导航到 **AI 功能开发中心**（`/admin/ai-dev`）
+3. 点击 **“配置”** 按钮
+4. 输入以下信息：
 
-   **OpenRouter Configuration:**
-   - **OpenRouter API Key**: Paste your OpenRouter API key
-   - **AI Model**: Select "Claude 3.5 Sonnet" (recommended)
+   **OpenRouter 配置：**
+   - **OpenRouter API 密钥**：粘贴您的 OpenRouter API 密钥
+   - **AI 模型**：选择“Claude 3.5 Sonnet”（推荐）
 
-   **GitHub Configuration:**
-   - **GitHub Token**: Paste your Personal Access Token
-   - **GitHub Owner**: Your GitHub username
-   - **GitHub Repo**: Your repository name (e.g., "gitbase")
-   - **Branch Name**: The branch to commit to (default: "main")
+   **GitHub 配置：**
+   - **GitHub 令牌**：粘贴您的个人访问令牌
+   - **GitHub 所有者**：您的 GitHub 用户名
+   - **GitHub 仓库**：您的仓库名称（例如，“gitbase”）
+   - **分支名称**：要提交到的分支（默认：“main”）
 
-5. Click **"Save Configuration"**
-   - All credentials are stored securely in your browser's localStorage
-   - They are never sent to any server except GitHub and OpenRouter APIs
+5. 点击 **“保存配置”**
+   - 所有凭据都安全地存储在浏览器的 localStorage 中
+   - 它们从未发送到任何服务器，除了 GitHub 和 OpenRouter API
 
-### Using the AI Development Center
+### 使用 AI 开发中心
 
-#### Example 1: Add a Feature
+#### 示例 1：添加功能
 
-**Feature Request:**
+**功能请求：**
 ```
 I want to add a carousel component on the homepage that displays
 the latest 3 articles, automatically switching every 5 seconds,
 with smooth fade transitions.
 ```
 
-**Process:**
-1. Paste the request in the "Feature Request" textarea
-2. Click **"Generate Code"**
-3. Watch the execution log as AI:
-   - Analyzes your project structure
-   - Identifies relevant files
-   - Generates new code
-4. Review the generated changes in the code diff viewer
-5. Click **"Confirm and Commit to GitHub"**
-6. Done! The feature is live
+**过程：**
+1. 将请求粘贴到“功能请求”文本区域
+2. 点击 **“生成代码”**
+3. 观察 AI 的执行日志：
+   - 分析您的项目结构
+   - 确定相关文件
+   - 生成新代码
+4. 在代码差异查看器中审查生成的更改
+5. 点击 **“确认并提交到 GitHub”**
+6. 完成！功能已上线
 
-#### Example 2: Fix a Bug
+#### 示例 2：修复错误
 
-**Feature Request:**
+**功能请求：**
 ```
 The article list page is not showing category badges. Please fix this
 by adding the CategoryBadge component to the article cards.
 ```
 
-#### Example 3: Add Styling
+#### 示例 3：添加样式
 
-**Feature Request:**
+**功能请求：**
 ```
 Make the navigation bar sticky with a blur effect when scrolling,
 similar to modern web designs.
 ```
 
-### Technical Details
+### 技术细节
 
-#### Batch Commit Optimization
+#### 批量提交优化
 
-The AI Development Center uses GitHub's **Git Trees API** for efficient batch commits:
-- Multiple file changes are committed in a single operation
-- Only 3-4 API requests regardless of the number of files modified
-- Avoids GitHub API rate limits
-- Atomic commits ensure consistency
+AI 开发中心使用 GitHub 的 **Git Trees API** 进行高效的批量提交：
+- 多个文件更改在一个操作中提交
+- 无论修改了多少文件，只有 3-4 个 API 请求
+- 避免 GitHub API 速率限制
+- 原子提交确保一致性
 
-#### Security Features
+#### 安全特性
 
-1. **Local Storage Only**: API keys stored in browser localStorage
-2. **Path Validation**: Prevents modification of sensitive files (.env, .git, etc.)
-3. **Human Review**: All code changes must be reviewed before committing
-4. **No Auto-Merge**: Changes are committed but not automatically deployed (requires manual review in production)
+1. **仅限本地存储**：API 密钥存储在浏览器 localStorage 中
+2. **路径验证**：防止修改敏感文件（.env、.git 等）
+3. **人工审查**：所有代码更改必须在提交前审查
+4. **无自动合并**：更改提交但不会自动部署（生产环境中需要手动审查）
 
-#### Supported Operations
+#### 支持的操作
 
-- ✅ Create new files
-- ✅ Modify existing files
-- ❌ Delete files (disabled for safety)
+- ✅ 创建新文件
+- ✅ 修改现有文件
+- ❌ 删除文件（出于安全原因禁用）
 
-### Best Practices
+### 最佳实践
 
-1. **Start Small**: Test with simple features first
-2. **Use Test Branch**: Configure a test branch for experiments
-3. **Review Code**: Always review AI-generated code before committing
-4. **Clear Descriptions**: Be specific and detailed in feature requests
-5. **Iterative Approach**: Build complex features in smaller steps
+1. **从小开始**：首先测试简单的功能
+2. **使用测试分支**：配置一个测试分支进行实验
+3. **审查代码**：始终在提交前审查 AI 生成的代码
+4. **清晰描述**：在功能请求中具体且详细
+5. **迭代方法**：以较小的步骤构建复杂功能
 
-### Troubleshooting
+### 故障排除
 
-**"Please configure OpenRouter API Key"**
-- Go to Configuration and enter your OpenRouter API key
+**“请配置 OpenRouter API 密钥”**
+- 转到配置并输入您的 OpenRouter API 密钥
 
-**"Failed to fetch project context"**
-- Check that your GitHub token has `repo` permissions
-- Verify the owner/repo names are correct
-- Ensure the branch exists in your repository
+**“无法获取项目上下文”**
+- 检查您的 GitHub 令牌是否具有 `repo` 权限
+- 验证所有者/仓库名称是否正确
+- 确保分支存在于您的仓库中
 
-**"Rate limit exceeded"**
-- The batch commit feature should prevent this
-- If it occurs, wait a few minutes before retrying
-- Consider using a different GitHub token
+**“速率限制超出”**
+- 批量提交功能应防止这种情况
+- 如果发生，请等待几分钟后重试
+- 考虑使用不同的 GitHub 令牌
 
-**"AI generated invalid code"**
-- Try rephrasing your request more clearly
-- Break complex requests into smaller tasks
-- Review and manually fix the generated code
+**“AI 生成了无效代码”**
+- 尝试更清晰地重新表述您的请求
+- 将复杂的请求分解为较小的任务
+- 审查并手动修复生成的代码
 
-### Limitations
+### 限制
 
-- AI-generated code may require manual adjustments
-- Complex features might need multiple iterations
-- The AI doesn't have access to your database or environment variables
-- Best suited for UI components, pages, and frontend logic
+- AI 生成的代码可能需要手动调整
+- 复杂的功能可能需要多次迭代
+- AI 无法访问您的数据库或环境变量
+- 最适合用于 UI 组件、页面和前端逻辑
 
-## Contributing
+## 贡献
 
-We welcome contributions to GitBase! Please read our [Contributing Guide](https://gitbase.app/posts/how-to-contributing-to-gitbase) for details on our code of conduct and the process for submitting pull requests.
+我们欢迎对 GitBase 的贡献！请阅读我们的[贡献指南](https://gitbase.app/posts/how-to-contributing-to-gitbase)以了解我们的行为准则和提交拉取请求的过程。
 
-## License
+## 许可证
 
-GitBase is open-source software licensed under the [MIT license](https://github.com/qiayue/gitbase/?tab=MIT-1-ov-file).
+GitBase 是开源软件，使用 [MIT 许可证](https://github.com/qiayue/gitbase/?tab=MIT-1-ov-file) 许可。
 
-## Support
+## 支持
 
-If you encounter any issues or have questions, please file an issue on the GitHub repository.
+如果您遇到任何问题或有疑问，请在 GitHub 仓库中提交问题。
 
-## Acknowledgements
+## 致谢
 
-GitBase is built with the following open-source libraries:
+GitBase 使用以下开源库构建：
 - [Next.js](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Shadcn/UI](https://ui.shadcn.com/)
 
-We are grateful to the maintainers and contributors of these projects.
+我们感谢这些项目的维护者和贡献者。

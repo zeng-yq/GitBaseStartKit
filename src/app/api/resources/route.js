@@ -13,6 +13,12 @@ const githubPath = 'data/json/resources.json';
 const localPath = path.join(process.cwd(), 'data', 'json', 'resources.json');
 
 async function getResourcesFromGitHub() {
+  // Check if GitHub credentials are configured
+  if (!owner || !repo) {
+    console.log('GitHub credentials not configured, falling back to local file');
+    return getLocalResources();
+  }
+
   try {
     const { data } = await octokit.repos.getContent({
       owner,
@@ -24,7 +30,9 @@ async function getResourcesFromGitHub() {
     return JSON.parse(content);
   } catch (error) {
     console.error('Error fetching resources from GitHub:', error);
-    throw error;
+    // Fall back to local file on error
+    console.log('Falling back to local file due to GitHub error');
+    return getLocalResources();
   }
 }
 
@@ -73,6 +81,18 @@ export async function POST(req) {
 
   const updatedResources = await req.json();
 
+  // If GitHub is not configured, save to local file
+  if (!owner || !repo) {
+    try {
+      fs.writeFileSync(localPath, JSON.stringify(updatedResources, null, 2));
+      console.log('Resources saved to local file');
+      return NextResponse.json(updatedResources);
+    } catch (error) {
+      console.error('Error saving to local file:', error);
+      return NextResponse.json({ error: 'Failed to save resources locally' }, { status: 500 });
+    }
+  }
+
   try {
     const { data: currentFile } = await octokit.repos.getContent({
       owner,
@@ -90,7 +110,7 @@ export async function POST(req) {
     });
 
     // Update local file as well
-    //fs.writeFileSync(localPath, JSON.stringify(updatedResources, null, 2));
+    fs.writeFileSync(localPath, JSON.stringify(updatedResources, null, 2));
 
     return NextResponse.json(updatedResources);
   } catch (error) {
