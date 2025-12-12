@@ -8,12 +8,13 @@ import { Metadata } from 'next'
 import { i18n, type Locale } from '@/lib/i18n-config'
 import { getDictionary } from '@/lib/get-dictionary'
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ lang: Locale }[]> {
   return i18n.locales.map((locale) => ({ lang: locale }))
 }
 
-export async function generateMetadata({ params }: { params: { lang: Locale } }): Promise<Metadata> {
-  const dict = await getDictionary(params.lang)
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const dict = await getDictionary(lang as Locale)
 
   return {
     title: dict.home.title + ' - ' + dict.home.subtitle,
@@ -21,8 +22,9 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
   }
 }
 
-export default async function Home({ params }: { params: { lang: Locale } }) {
-  const dict = await getDictionary(params.lang)
+export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params
+  const dict = await getDictionary(lang as Locale)
 
   const resourcesPath = path.join(process.cwd(), 'data', 'json', 'resources.json')
   const allResources = JSON.parse(fs.readFileSync(resourcesPath, 'utf8'))
