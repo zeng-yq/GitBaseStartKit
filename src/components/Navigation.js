@@ -7,12 +7,36 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import LanguageSuggestion from '@/components/LanguageSuggestion'
-import { i18n, getLocaleFromPath } from '@/lib/i18n-config'
+import { i18n, getLocaleFromPath, addLocaleToPath } from '@/lib/i18n-config'
+
+const navigationText = {
+  en: {
+    home: 'Home',
+    resources: 'Resources',
+    articles: 'Articles',
+    admin: 'Admin',
+    logout: 'Logout'
+  },
+  zh: {
+    home: '首页',
+    resources: '资源',
+    articles: '文章',
+    admin: '管理',
+    logout: '登出'
+  },
+  ja: {
+    home: 'ホーム',
+    resources: 'リソース',
+    articles: '記事',
+    admin: '管理',
+    logout: 'ログアウト'
+  }
+}
 
 const navItems = [
-  { path: '/', label: 'Home' },
-  { path: '/resources', label: 'Resources' },
-  { path: '/posts', label: 'Articles' },
+  { path: '/', key: 'home' },
+  { path: '/resources', key: 'resources' },
+  { path: '/posts', key: 'articles' },
 ]
 
 export function Navigation() {
@@ -26,10 +50,12 @@ export function Navigation() {
 
   // Get localized paths for nav items
   const getLocalizedPath = (path) => {
-    if (currentLocale === i18n.defaultLocale) {
-      return path
-    }
-    return `/${currentLocale}${path}`
+    return addLocaleToPath(path, currentLocale)
+  }
+
+  // Get navigation text for current locale
+  const getText = () => {
+    return navigationText[currentLocale] || navigationText[i18n.defaultLocale]
   }
 
   useEffect(() => {
@@ -59,11 +85,13 @@ export function Navigation() {
     try {
       await fetch('/api/logout', { method: 'POST' });
       setIsLoggedIn(false);
-      router.push('/');
+      router.push(getLocalizedPath('/'));
     } catch (error) {
       console.error('Failed to logout:', error);
     }
   };
+
+  const text = getText()
 
   return (
     <>
@@ -91,7 +119,7 @@ export function Navigation() {
                     pathname === localizedPath && "text-foreground"
                   )}
                 >
-                  {item.label}
+                  {text[item.key]}
                 </Link>
               )
             })}
@@ -101,10 +129,10 @@ export function Navigation() {
           <LanguageSwitcher currentLocale={currentLocale} />
           {!isLoading && isLoggedIn && (
             <>
-              <Link href="/admin">
-                <Button variant="ghost">Admin</Button>
+              <Link href={getLocalizedPath('/admin')}>
+                <Button variant="ghost">{text.admin}</Button>
               </Link>
-              <Button onClick={handleLogout} variant="outline">Logout</Button>
+              <Button onClick={handleLogout} variant="outline">{text.logout}</Button>
             </>
           )}
         </div>
