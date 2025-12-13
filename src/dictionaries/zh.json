@@ -62,6 +62,36 @@
     "signIn": "登录",
     "signingIn": "登录中..."
   },
+  "faq": {
+    "title": "常见问题",
+    "subtitle": "还有其他问题？联系我们：support@example.com",
+    "items": [
+      {
+        "question": "什么是 GitBase？",
+        "answer": "GitBase 是一个开源的动态网站内容管理系统，无需数据库运行。它使用 Next.js、Tailwind CSS 和 Shadcn/UI 构建。"
+      },
+      {
+        "question": "我需要数据库吗？",
+        "answer": "不需要，GitBase 不需要传统数据库。它使用 GitHub API 进行内容管理，使其轻量且易于部署。"
+      },
+      {
+        "question": "GitBase 真的免费吗？",
+        "answer": "是的，GitBase 完全免费且开源。您可以将其用于个人和商业项目，无需任何许可费用。"
+      },
+      {
+        "question": "如何添加内容？",
+        "answer": "内容通过 GitHub 进行管理。您可以直接通过 GitHub 界面创建、编辑和管理您的文章和资源。"
+      },
+      {
+        "question": "我可以为 GitBase 做贡献吗？",
+        "answer": "当然！GitBase 是开源项目，欢迎贡献。您可以提交拉取请求、报告问题或建议新功能。"
+      },
+      {
+        "question": "使用了哪些技术？",
+        "answer": "GitBase 使用 Next.js 构建，Tailwind CSS 进行样式设计，Shadcn/UI 提供组件。它利用 GitHub 的 API 进行内容管理。"
+      }
+    ]
+  },
   "language": {
     "select": "选择语言",
     "suggestion": {

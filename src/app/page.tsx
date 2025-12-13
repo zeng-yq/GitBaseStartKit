@@ -1,9 +1,4 @@
 // pages/index.js
-import fs from 'fs'
-import path from 'path'
-import { getSortedPostsData } from '@/lib/posts'
-import ResourceList from '@/components/ResourceList'
-import ArticleList from '@/components/ArticleList'
 import { Features } from '@/components/Features'
 import FAQ from '@/components/FAQ'
 import { Metadata } from 'next'
@@ -14,12 +9,6 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  const resourcesPath = path.join(process.cwd(), 'data', 'json', 'resources.json')
-  const allResources = JSON.parse(fs.readFileSync(resourcesPath, 'utf8'))
-  // Filter out deleted resources
-  const resources = allResources.filter((resource: any) => !resource.deleted)
-  const allPostsData = getSortedPostsData().slice(0, 6)
-
   return (
     <div className="container mx-auto py-12 space-y-16">
       <section className="text-center space-y-4">
@@ -36,8 +25,6 @@ export default function Home() {
 
       <Features />
       <FAQ />
-      <ResourceList resources={resources} />
-      <ArticleList articles={allPostsData} />
     </div>
   )
 }

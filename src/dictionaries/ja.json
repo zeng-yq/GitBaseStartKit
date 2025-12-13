@@ -62,6 +62,36 @@
     "signIn": "ログイン",
     "signingIn": "ログイン中..."
   },
+  "faq": {
+    "title": "よくある質問",
+    "subtitle": "他にご質問がありますか？support@example.com までお問い合わせください",
+    "items": [
+      {
+        "question": "GitBase とは何ですか？",
+        "answer": "GitBase は、データベースなしで動作するオープンソースの動的ウェブサイト CMS です。Next.js、Tailwind CSS、Shadcn/UI で構築されています。"
+      },
+      {
+        "question": "データベースは必要ですか？",
+        "answer": "いいえ、GitBase は従来のデータベースを必要としません。GitHub API を使用してコンテンツ管理を行うため、軽量で展開が容易です。"
+      },
+      {
+        "question": "GitBase は本当に無料ですか？",
+        "answer": "はい、GitBase は完全に無料でオープンソースです。ライセンス料金なしで個人プロジェクトや商用プロジェクトで使用できます。"
+      },
+      {
+        "question": "コンテンツを追加するにはどうすればよいですか？",
+        "answer": "コンテンツは GitHub を通じて管理されます。GitHub インターフェースから直接記事やリソースを作成、編集、管理できます。"
+      },
+      {
+        "question": "GitBase に貢献できますか？",
+        "answer": "もちろんです！GitBase はオープンソースで、貢献を歓迎しています。プルリクエストの提出、問題の報告、新機能の提案ができます。"
+      },
+      {
+        "question": "どのような技術が使用されていますか？",
+        "answer": "GitBase は Next.js で構築され、Tailwind CSS でスタイリング、Shadcn/UI でコンポーネントを提供しています。GitHub の API を活用してコンテンツ管理を行います。"
+      }
+    ]
+  },
   "language": {
     "select": "言語を選択",
     "suggestion": {

@@ -1,10 +1,6 @@
 // Multi-language home page
-import fs from 'fs'
-import path from 'path'
-import { getSortedPostsData } from '@/lib/posts'
-import ResourceList from '@/components/ResourceList'
-import ArticleList from '@/components/ArticleList'
 import { Features } from '@/components/Features'
+import FAQI18n from '@/components/FAQI18n'
 import { Metadata } from 'next'
 import { i18n, type Locale } from '@/lib/i18n-config'
 import { getDictionary } from '@/lib/get-dictionary'
@@ -27,12 +23,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   const { lang } = await params
   const dict = await getDictionary(lang as Locale)
 
-  const resourcesPath = path.join(process.cwd(), 'data', 'json', 'resources.json')
-  const allResources = JSON.parse(fs.readFileSync(resourcesPath, 'utf8'))
-  // Filter out deleted resources
-  const resources = allResources.filter((resource: any) => !resource.deleted)
-  const allPostsData = getSortedPostsData().slice(0, 6)
-
   return (
     <div className="container mx-auto py-12 space-y-16">
       <section className="text-center space-y-4">
@@ -44,7 +34,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </h2>
         <p className="mx-auto max-w-[700px] text-gray-500 md:text-base flex items-center justify-center gap-2">
           <svg className="w-5 h-5 animate-pulse" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" fill="url(#sparkle-gradient)" stroke="#FCD34D" stroke-width="1"/>
+            <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" fill="url(#sparkle-gradient)" stroke="#FCD34D" strokeWidth="1"/>
             <defs>
               <linearGradient id="sparkle-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" style={{stopColor: "#FDE68A"}} />
@@ -55,7 +45,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           </svg>
           {dict.home.description}
           <svg className="w-5 h-5 animate-pulse" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" fill="url(#sparkle-gradient-2)" stroke="#FCD34D" stroke-width="1"/>
+            <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" fill="url(#sparkle-gradient-2)" stroke="#FCD34D" strokeWidth="1"/>
             <defs>
               <linearGradient id="sparkle-gradient-2" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" style={{stopColor: "#FDE68A"}} />
@@ -68,8 +58,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       </section>
 
       <Features />
-      <ResourceList resources={resources} />
-      <ArticleList articles={allPostsData} />
+      <FAQI18n dict={dict} />
     </div>
   )
 }
