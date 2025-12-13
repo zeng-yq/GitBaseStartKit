@@ -73,6 +73,11 @@ export function Navigation() {
         <div className="container flex h-16 items-center justify-between">
         <div className="flex gap-6 md:gap-10">
           <Link href={getLocalizedPath('/')} className="flex items-center space-x-2">
+            <img
+              src="/favicon.svg"
+              alt="GitBase Logo"
+              className="h-8 w-8"
+            />
             <span className="inline-block font-bold">GitBase</span>
           </Link>
           <nav className="hidden md:flex gap-6">
