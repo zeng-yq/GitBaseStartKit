@@ -11,6 +11,11 @@ export const metadata: Metadata = {
     template: '%s | GitBase'
   },
   description: 'Open source dynamic website without database, built with Next.js and GitHub API',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 }
 
 interface RootLayoutProps {
