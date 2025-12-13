@@ -13,10 +13,10 @@ import {
 import CategoryBadge from './CategoryBadge'
 import { getLocaleFromPath, addLocaleToPath } from '@/lib/i18n-config'
 
-export default function ArticleList({ articles, showMoreLink = true }) {
+export default function ArticleList({ articles, showMoreLink = true, locale }) {
   const [categories, setCategories] = useState([])
   const pathname = usePathname()
-  const currentLocale = getLocaleFromPath(pathname) || 'en'  // Default to 'en' if no locale in path
+  const currentLocale = locale || getLocaleFromPath(pathname) || 'en'  // Use provided locale or get from path
 
   useEffect(() => {
     // Fetch categories

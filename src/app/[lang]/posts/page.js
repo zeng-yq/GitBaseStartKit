@@ -20,11 +20,12 @@ export async function generateMetadata({ params }) {
 export default async function Articles({ params }) {
   const { lang } = await params
   const dict = await getDictionary(lang)
-  const allPostsData = getSortedPostsData()
+  // 传递语言参数，只获取当前语言的文章
+  const allPostsData = getSortedPostsData(lang)
 
   return (
     <div className="container mx-auto py-12">
-      <ArticleList articles={allPostsData} showMoreLink={false} />
+      <ArticleList articles={allPostsData} showMoreLink={false} locale={lang} />
     </div>
   )
 }

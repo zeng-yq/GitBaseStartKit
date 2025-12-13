@@ -2,29 +2,52 @@ import fs from 'fs'
 import path from 'path'
 import { remark } from 'remark'
 import html from 'remark-html'
+import { i18n } from './i18n-config'
 
 const postsDirectory = path.join(process.cwd(), 'data', 'md')
-const articlesJsonPath = path.join(process.cwd(), 'data', 'json', 'articles.json')
 
-export function getSortedPostsData() {
-  // Read articles.json as the source of truth for metadata
+// 新增：获取指定语言的文章
+export function getArticles(locale = 'en') {
+  const articlesJsonPath = path.join(process.cwd(), 'data', 'json', `articles-${locale}.json`)
+
   let articles = []
   try {
     const articlesJson = fs.readFileSync(articlesJsonPath, 'utf8')
     articles = JSON.parse(articlesJson)
   } catch (error) {
-    console.error('Error reading articles.json:', error)
+    console.error(`Error reading articles-${locale}.json:`, error)
+    // 回退到读取所有文章
+    try {
+      const allArticlesJson = fs.readFileSync(path.join(process.cwd(), 'data', 'json', 'articles.json'), 'utf8')
+      const allArticles = JSON.parse(allArticlesJson)
+      articles = allArticles.filter(article => article.language === locale)
+    } catch (fallbackError) {
+      console.error('Error reading fallback articles.json:', fallbackError)
+      return []
+    }
+  }
+
+  return articles
+}
+
+export function getSortedPostsData(locale = 'en') {
+  // 首先尝试读取特定语言的文章
+  let articles = getArticles(locale)
+
+  // 如果没有找到特定语言的文章，返回空数组
+  if (articles.length === 0) {
+    console.log(`No articles found for locale: ${locale}`)
     return []
   }
 
   // Transform articles data and check if corresponding MD files exist
   const allPostsData = articles.map((article) => {
-    // Extract id from path (e.g., "data/md/article-name.md" -> "article-name")
+    // Extract id from path (e.g., "data/md/en/article-name.md" -> "article-name")
     const fileName = path.basename(article.path)
     const id = fileName.replace(/\.md$/, '')
 
-    // Check if the file exists
-    const fullPath = path.join(postsDirectory, fileName)
+    // Check if the file exists in the correct language directory
+    const fullPath = path.join(postsDirectory, locale, fileName)
     const fileExists = fs.existsSync(fullPath)
 
     return {
@@ -36,6 +59,7 @@ export function getSortedPostsData() {
       deleted: article.deleted === true,
       fileExists,
       path: article.path,
+      language: locale
     }
   })
 
@@ -49,32 +73,73 @@ export function getSortedPostsData() {
     })
 }
 
-export async function getPostData(slug) {
+export async function getPostData(slug, locale = 'en') {
   if (!slug) {
     throw new Error('Slug is required');
   }
 
   const mdFileName = `${slug}.md`;
-  const articlePath = `data/md/${mdFileName}`;
 
-  // First, get metadata from articles.json
-  let articles = [];
+  // 首先尝试从特定语言的文章索引中查找
+  let article = null;
+  let articleLanguage = locale;
+
+  // 尝试从语言特定的文件中查找
   try {
-    const articlesJson = fs.readFileSync(articlesJsonPath, 'utf8');
-    articles = JSON.parse(articlesJson);
+    const langArticlesJsonPath = path.join(process.cwd(), 'data', 'json', `articles-${locale}.json`);
+    const langArticlesJson = fs.readFileSync(langArticlesJsonPath, 'utf8');
+    const langArticles = JSON.parse(langArticlesJson);
+
+    article = langArticles.find(a => {
+      const fileName = path.basename(a.path);
+      return fileName === mdFileName;
+    });
+
+    if (article) {
+      articleLanguage = locale;
+    }
   } catch (error) {
-    console.error('Error reading articles.json:', error);
-    throw new Error('Failed to read articles index');
+    console.log(`Could not read articles-${locale}.json, trying fallback`);
   }
 
-  // Find the article in the index
-  const article = articles.find(a => a.path === articlePath);
+  // 如果在语言特定文件中没找到，尝试从其他语言文件中查找
+  if (!article) {
+    // 尝试从其他语言文件中查找
+    const otherLanguages = ['en', 'zh', 'ja'].filter(lang => lang !== locale);
+
+    for (const lang of otherLanguages) {
+      try {
+        const langArticlesJsonPath = path.join(process.cwd(), 'data', 'json', `articles-${lang}.json`);
+        const langArticlesJson = fs.readFileSync(langArticlesJsonPath, 'utf8');
+        const langArticles = JSON.parse(langArticlesJson);
+
+        article = langArticles.find(a => {
+          const fileName = path.basename(a.path);
+          return fileName === mdFileName;
+        });
+
+        if (article) {
+          articleLanguage = lang;
+          break;
+        }
+      } catch (error) {
+        console.log(`Could not read articles-${lang}.json`);
+      }
+    }
+
+    if (!article) {
+      throw new Error(`Article not found: ${slug}`);
+    }
+  }
+
   if (!article || article.deleted === true) {
     throw new Error(`Article not found or deleted: ${slug}`);
   }
 
-  // Read the markdown file for content only
-  const fullPath = path.join(postsDirectory, mdFileName);
+  // 构建文件路径，考虑语言目录
+  const languageDir = articleLanguage || 'en';
+  const fullPath = path.join(postsDirectory, languageDir, mdFileName);
+
   if (!fs.existsSync(fullPath)) {
     throw new Error(`Post file not found: ${mdFileName} at path ${fullPath}`);
   }
@@ -103,16 +168,19 @@ export async function getPostData(slug) {
     date: article.date,
     category: article.category,
     path: article.path,
+    language: articleLanguage
   };
 }
 
-// Helper function to update articles.json
-export async function updateArticleMetadata(slug, metadata) {
+
+// Helper function to update article metadata in language-specific files
+export async function updateArticleMetadata(slug, metadata, locale = 'en') {
   try {
+    const articlesJsonPath = path.join(process.cwd(), 'data', 'json', `articles-${locale}.json`);
     const articlesJson = fs.readFileSync(articlesJsonPath, 'utf8');
     let articles = JSON.parse(articlesJson);
 
-    const articlePath = `data/md/${slug}.md`;
+    const articlePath = `data/md/${locale}/${slug}.md`;
     const articleIndex = articles.findIndex(a => a.path === articlePath);
 
     if (articleIndex >= 0) {

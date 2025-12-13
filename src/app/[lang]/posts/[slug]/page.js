@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { slug, lang } = await params
-  const postData = await getPostData(slug)
+  const postData = await getPostData(slug, lang)
   return {
     title: `${postData.title}`,
     description: postData.description || `Read about ${postData.title} on GitBase`,
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
 export default async function Post({ params }) {
   const { slug, lang } = await params
   const dict = await getDictionary(lang)
-  const postData = await getPostData(slug)
+  const postData = await getPostData(slug, lang)
 
   const homePath = addLocaleToPath('/', lang)
   const postsPath = addLocaleToPath('/posts', lang)
@@ -45,6 +45,9 @@ export default async function Post({ params }) {
         {postData.description && (
           <p className="text-gray-800">{postData.description}</p>
         )}
+        <div className="mt-2 text-sm text-gray-500">
+          Language: {i18n.localeNames[postData.language] || postData.language}
+        </div>
       </div>
 
       {/* Article content */}

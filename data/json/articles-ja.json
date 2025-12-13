@@ -1,0 +1,56 @@
+[
+  {
+    "title": "GitBase管理パネルでのリソースのアクセスと管理",
+    "description": "GitBaseで管理パネルにアクセスし、リソースリストを管理する方法",
+    "date": "2024-08-11T13:14:40.737Z",
+    "category": "tutorial",
+    "lastModified": "2025-12-13T14:04:24.793Z",
+    "path": "data/md/ja/accessing-admin-managing-resources.md",
+    "id": "accessing-admin-managing-resources"
+  },
+  {
+    "title": "GitBaseの環境変数の設定",
+    "description": "GitBase環境変数の設定方法",
+    "date": "2024-08-11T13:08:05.474Z",
+    "category": null,
+    "lastModified": "2025-12-13T14:04:24.797Z",
+    "path": "data/md/ja/environment-variables.md",
+    "id": "environment-variables"
+  },
+  {
+    "title": "GitBaseのインストールとデプロイ：ステップバイステップガイド",
+    "description": "初心者向けのGitBaseローカルセットアップとVercelへのデプロイに関する包括的ガイド。",
+    "date": "2024-08-11",
+    "category": null,
+    "lastModified": "2025-12-13T14:04:24.809Z",
+    "path": "data/md/ja/gitbase-install-guide.md",
+    "id": "gitbase-install-guide"
+  },
+  {
+    "title": "GitBase：動的でデータベース不要のウェブサイトソリューション",
+    "description": "Next.js、Tailwind CSS、GitHub APIを組み合わせてコンテンツ管理を行う革新的なオープンソースプロジェクトGitBaseの機能と実装を探ります。",
+    "date": "2024-08-11",
+    "category": null,
+    "lastModified": "2025-12-13T14:04:24.810Z",
+    "path": "data/md/ja/gitbase-introduction.md",
+    "id": "gitbase-introduction"
+  },
+  {
+    "title": "GitBaseへの貢献",
+    "description": "こんにちは！私はGitBaseの作成者Qiayueです。あなたが私たちのプロジェクトへ歓迎し、GitBaseをさらに良くするための貢献を楽しみにしています！",
+    "date": "2024-08-16T03:57:46.153Z",
+    "category": null,
+    "lastModified": "2025-12-13T14:04:24.813Z",
+    "path": "data/md/ja/how-to-contributing-to-gitbase.md",
+    "id": "how-to-contributing-to-gitbase"
+  },
+  {
+    "title": "GitBase管理パネルでの記事の管理",
+    "description": "このガイドでは、管理パネルを使用して記事を表示、編集、新規作成するプロセスについて説明します。",
+    "date": "2024-08-11T13:16:44.231Z",
+    "category": null,
+    "lastModified": "2025-12-13T14:04:24.815Z",
+    "path": "data/md/ja/managing-articles.md",
+    "id": "managing-articles"
+  }
+]
