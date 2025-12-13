@@ -127,7 +127,7 @@ export function Features() {
                         <Card className="relative col-span-full overflow-hidden lg:col-span-3">
                             <CardContent className="grid pt-2 sm:grid-cols-2">
                                 <div className="relative z-10 flex flex-col justify-between space-y-6 lg:space-y-3">
-                                    <div className="relative flex aspect-square size-12 rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
+                                    <div className="relative flex aspect-square size-12 rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5 mt-4">
                                         <Shield className="m-auto size-5" strokeWidth={1} />
                                     </div>
                                     <div className="space-y-2">
