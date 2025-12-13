@@ -26,6 +26,12 @@ export default async function Home() {
           GitBase is a dynamic, database-free website built with Next.js.
           <span className="text-yellow-400">✨︎</span>
         </p>
+        <div className="flex flex-wrap justify-center gap-3 pt-2">
+          <span className="px-3 py-1 text-sm font-medium text-white bg-green-500 rounded-full">100% Free</span>
+          <span className="px-3 py-1 text-sm font-medium text-white bg-blue-500 rounded-full">Powered by AI</span>
+          <span className="px-3 py-1 text-sm font-medium text-white bg-purple-500 rounded-full">No Login Required</span>
+          <span className="px-3 py-1 text-sm font-medium text-white bg-red-500 rounded-full">Privacy</span>
+        </div>
       </section>
 
       <Features />
