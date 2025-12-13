@@ -1,6 +1,7 @@
 // Multi-language home page
 import { Features } from '@/components/Features'
 import FAQI18n from '@/components/FAQI18n'
+import Testimonials from '@/components/Testimonials'
 import { Metadata } from 'next'
 import { i18n, type Locale } from '@/lib/i18n-config'
 import { getDictionary } from '@/lib/get-dictionary'
@@ -58,6 +59,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       </section>
 
       <Features />
+      <Testimonials dict={dict} />
       <FAQI18n dict={dict} />
     </div>
   )

@@ -92,6 +92,66 @@
       }
     ]
   },
+  "testimonials": {
+    "title": "What Users Say",
+    "subtitle": "Real feedback from our amazing community",
+    "items": [
+      {
+        "text": "GitBase revolutionized our content management workflow. The database-free approach makes deployment incredibly simple, and GitHub integration transformed our team collaboration.",
+        "image": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+        "name": "Alex Thompson",
+        "role": "Frontend Developer"
+      },
+      {
+        "text": "As a tech blogger, GitBase lets me focus on writing instead of maintenance. The Markdown support with Git version control is a perfect combination for technical content.",
+        "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+        "name": "Sarah Johnson",
+        "role": "Tech Blogger"
+      },
+      {
+        "text": "Our small team uses GitBase for product documentation, and the results have been outstanding. No database backups to worry about—everything is safely stored in Git.",
+        "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+        "name": "Michael Chen",
+        "role": "Product Manager"
+      },
+      {
+        "text": "The deployment process with GitBase is seamless. Had our site running on Vercel in minutes, and the performance has been exceptional.",
+        "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+        "name": "David Wilson",
+        "role": "Full Stack Developer"
+      },
+      {
+        "text": "As an open source maintainer, GitBase makes our project website look professional while being easy to maintain. The community feedback has been fantastic!",
+        "image": "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face",
+        "name": "Emily Martinez",
+        "role": "Open Source Contributor"
+      },
+      {
+        "text": "Migrating from WordPress to GitBase was the best decision we made. Page load speeds improved by 300%, and maintenance costs are nearly zero.",
+        "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face",
+        "name": "James Rodriguez",
+        "role": "Content Creator"
+      },
+      {
+        "text": "GitBase's TypeScript support gives me confidence when customizing components. Type safety has significantly reduced development errors.",
+        "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=150&h=150&fit=crop&crop=face",
+        "name": "Robert Kim",
+        "role": "TypeScript Enthusiast"
+      },
+      {
+        "text": "Our company's documentation site using GitBase increased our dev team's technical doc update frequency by 5x. The Git workflow is incredibly efficient!",
+        "image": "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face",
+        "name": "Lisa Anderson",
+        "role": "Technical Documentation Manager"
+      },
+      {
+        "text": "As a designer, I appreciate GitBase's clean aesthetics. It lets content be the star, not distracted by complex CMS interfaces.",
+        "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+        "name": "Jessica Park",
+        "role": "UI/UX Designer"
+      }
+    ]
+  },
   "language": {
     "select": "Select Language",
     "suggestion": {

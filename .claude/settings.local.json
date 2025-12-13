@@ -56,7 +56,8 @@
       "Bash(identify public/images/profile_pic/profile_pic_6.webp)",
       "Bash(echo:*)",
       "Bash(git commit:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git diff:*)"
     ],
     "deny": [],
     "ask": []

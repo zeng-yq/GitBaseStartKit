@@ -1,6 +1,8 @@
 // pages/index.js
 import { Features } from '@/components/Features'
 import FAQ from '@/components/FAQ'
+import Testimonials from '@/components/Testimonials'
+import { getDictionary } from '@/lib/get-dictionary'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -8,7 +10,10 @@ export const metadata: Metadata = {
   description: 'A Next.js site with Tailwind & Shadcn/UI, using GitHub API for content management. No database needed for dynamic updates.',
 }
 
-export default function Home() {
+export default async function Home() {
+  // Get English dictionary for testimonials
+  const dict = await getDictionary('en');
+
   return (
     <div className="container mx-auto py-12 space-y-16">
       <section className="text-center space-y-4">
@@ -24,6 +29,7 @@ export default function Home() {
       </section>
 
       <Features />
+      <Testimonials dict={dict} />
       <FAQ />
     </div>
   )

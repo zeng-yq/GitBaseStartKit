@@ -92,6 +92,66 @@
       }
     ]
   },
+  "testimonials": {
+    "title": "用户评价",
+    "subtitle": "来自我们优秀社区的真实反馈",
+    "items": [
+      {
+        "text": "GitBase 革命性地改变了我们的内容管理方式，无需数据库的设计让部署变得异常简单。GitHub 集成让团队协作变得前所未有的流畅。",
+        "image": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+        "name": "王小明",
+        "role": "前端开发工程师"
+      },
+      {
+        "text": "作为一个技术博客作者，GitBase 让我可以专注于写作而不是技术维护。Markdown 支持和 Git 版本控制简直是完美组合。",
+        "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+        "name": "李美华",
+        "role": "技术博主"
+      },
+      {
+        "text": "我们的小团队使用 GitBase 管理产品文档，效果出乎意料的好。无需担心数据库备份，所有内容都在 Git 中安全保存。",
+        "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+        "name": "张伟",
+        "role": "产品经理"
+      },
+      {
+        "text": "GitBase 的部署过程简直是无缝的。几分钟内就能在 Vercel 上搭建好，而且性能表现非常出色。",
+        "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+        "name": "刘强",
+        "role": "全栈开发者"
+      },
+      {
+        "text": "作为一个开源项目维护者，GitBase 让我们的项目网站看起来专业且易于维护。社区反馈一直很好！",
+        "image": "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face",
+        "name": "陈静",
+        "role": "开源贡献者"
+      },
+      {
+        "text": "从 WordPress 迁移到 GitBase 是我们做过的最佳决定。页面加载速度提升了 300%，维护成本几乎为零。",
+        "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face",
+        "name": "赵敏",
+        "role": "内容创作者"
+      },
+      {
+        "text": "GitBase 的 TypeScript 支持让我在自定义组件时感到非常安心。类型安全大大减少了开发中的错误。",
+        "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=150&h=150&fit=crop&crop=face",
+        "name": "孙涛",
+        "role": "TypeScript 爱好者"
+      },
+      {
+        "text": "我们公司的文档网站使用 GitBase 后，开发团队的技术文档更新频率提高了 5 倍。Git 工作流真的很高效！",
+        "image": "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face",
+        "name": "周芳",
+        "role": "技术文档经理"
+      },
+      {
+        "text": "作为一个设计师，我欣赏 GitBase 的简洁美学。它让内容成为主角，而不是被复杂的 CMS 界面分散注意力。",
+        "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+        "name": "吴艺",
+        "role": "UI/UX 设计师"
+      }
+    ]
+  },
   "language": {
     "select": "选择语言",
     "suggestion": {
