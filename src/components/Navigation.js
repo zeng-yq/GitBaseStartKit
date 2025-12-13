@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { Github } from 'lucide-react'
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import LanguageSwitcher from '@/components/LanguageSwitcher'
@@ -100,28 +99,13 @@ export function Navigation() {
         </div>
         <div className="flex items-center gap-4">
           <LanguageSwitcher currentLocale={currentLocale} />
-          <Link
-            href="https://github.com/qiayue/gitbase"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground"
-          >
-            <Github className="h-5 w-5" />
-            <span className="sr-only">GitHub</span>
-          </Link>
-          {!isLoading && (
-            isLoggedIn ? (
-              <>
-                <Link href="/admin">
-                  <Button variant="ghost">Admin</Button>
-                </Link>
-                <Button onClick={handleLogout} variant="outline">Logout</Button>
-              </>
-            ) : (
-              <Link href="/login">
-                <Button>Login</Button>
+          {!isLoading && isLoggedIn && (
+            <>
+              <Link href="/admin">
+                <Button variant="ghost">Admin</Button>
               </Link>
-            )
+              <Button onClick={handleLogout} variant="outline">Logout</Button>
+            </>
           )}
         </div>
       </div>
