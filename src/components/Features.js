@@ -5,10 +5,10 @@ import { Shield, Users } from 'lucide-react'
 
 export function Features() {
     return (
-        <section className="py-16 md:py-32">
+        <section className="py-2 md:py-4">
             <div className="container mx-auto px-6">
                 {/* 功能区域占位符虚线框 */}
-                <div className="mb-16 border-4 border-dashed border-muted-foreground/30 rounded-2xl bg-muted/5 p-12 text-center">
+                <div className="mb-24 border-4 border-dashed border-muted-foreground/30 rounded-2xl bg-muted/5 p-12 text-center">
                     <div className="space-y-4">
                         <div className="mx-auto size-16 rounded-full border-2 border-dashed border-muted-foreground/40 flex items-center justify-center">
                             <svg className="size-8 text-muted-foreground/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
