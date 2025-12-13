@@ -189,51 +189,51 @@ export function Features() {
                                         </svg>
 
                                         {/* 顶部节点 */}
-                                        <div className="absolute left-1/2 top-2 -translate-x-1/2 text-center">
-                                            <div className="ring-background size-10 ring-4">
-                                                <img className="size-full rounded-full" src="https://avatars.githubusercontent.com/u/102558960?v=4" alt="" />
+                                        <div className="absolute left-1/2 top-2 -translate-x-1/2">
+                                            <div className="relative size-10">
+                                                <div className="absolute inset-1 rounded-full border border-muted-foreground/30"></div>
+                                                <div className="absolute inset-2 rounded-full bg-gradient-to-r from-primary/20 to-primary/5"></div>
                                             </div>
-                                            <span className="mt-1 block rounded border px-2 py-1 text-xs shadow-sm">Likeur</span>
                                         </div>
 
                                         {/* 右上节点 */}
-                                        <div className="absolute right-0 top-8 -translate-x-2 text-center">
-                                            <div className="ring-background size-10 ring-4">
-                                                <img className="size-full rounded-full" src="https://avatars.githubusercontent.com/u/47919550?v=4" alt="" />
+                                        <div className="absolute right-0 top-8 -translate-x-2">
+                                            <div className="relative size-10">
+                                                <div className="absolute inset-1 rounded-full border border-muted-foreground/30"></div>
+                                                <div className="absolute inset-2 rounded-full bg-gradient-to-r from-primary/20 to-primary/5"></div>
                                             </div>
-                                            <span className="mt-1 block rounded border px-2 py-1 text-xs shadow-sm">M. Irung</span>
                                         </div>
 
                                         {/* 右下节点 */}
-                                        <div className="absolute right-0 bottom-8 -translate-x-2 text-center">
-                                            <div className="ring-background size-10 ring-4">
-                                                <img className="size-full rounded-full" src="https://avatars.githubusercontent.com/u/31113941?v=4" alt="" />
+                                        <div className="absolute right-0 bottom-8 -translate-x-2">
+                                            <div className="relative size-10">
+                                                <div className="absolute inset-1 rounded-full border border-muted-foreground/30"></div>
+                                                <div className="absolute inset-2 rounded-full bg-gradient-to-r from-primary/20 to-primary/5"></div>
                                             </div>
-                                            <span className="mt-1 block rounded border px-2 py-1 text-xs shadow-sm">B. Ng</span>
                                         </div>
 
                                         {/* 底部节点 */}
-                                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-2 text-center">
-                                            <div className="ring-background size-10 ring-4">
-                                                <img className="size-full rounded-full" src="https://avatars.githubusercontent.com/u/102558960?v=4" alt="" />
+                                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-2">
+                                            <div className="relative size-10">
+                                                <div className="absolute inset-1 rounded-full border border-muted-foreground/30"></div>
+                                                <div className="absolute inset-2 rounded-full bg-gradient-to-r from-primary/20 to-primary/5"></div>
                                             </div>
-                                            <span className="mt-1 block rounded border px-2 py-1 text-xs shadow-sm">C. Dev</span>
                                         </div>
 
                                         {/* 左下节点 */}
-                                        <div className="absolute left-0 bottom-8 translate-x-2 text-center">
-                                            <div className="ring-background size-10 ring-4">
-                                                <img className="size-full rounded-full" src="https://avatars.githubusercontent.com/u/102558960?v=4" alt="" />
+                                        <div className="absolute left-0 bottom-8 translate-x-2">
+                                            <div className="relative size-10">
+                                                <div className="absolute inset-1 rounded-full border border-muted-foreground/30"></div>
+                                                <div className="absolute inset-2 rounded-full bg-gradient-to-r from-primary/20 to-primary/5"></div>
                                             </div>
-                                            <span className="mt-1 block rounded border px-2 py-1 text-xs shadow-sm">A. Smith</span>
                                         </div>
 
                                         {/* 左上节点 */}
-                                        <div className="absolute left-0 top-8 translate-x-2 text-center">
-                                            <div className="ring-background size-10 ring-4">
-                                                <img className="size-full rounded-full" src="https://avatars.githubusercontent.com/u/102558960?v=4" alt="" />
+                                        <div className="absolute left-0 top-8 translate-x-2">
+                                            <div className="relative size-10">
+                                                <div className="absolute inset-1 rounded-full border border-muted-foreground/30"></div>
+                                                <div className="absolute inset-2 rounded-full bg-gradient-to-r from-primary/20 to-primary/5"></div>
                                             </div>
-                                            <span className="mt-1 block rounded border px-2 py-1 text-xs shadow-sm">K. Lee</span>
                                         </div>
 
                                         {/* 中心发光核心 */}
