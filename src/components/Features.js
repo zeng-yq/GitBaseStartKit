@@ -7,6 +7,23 @@ export function Features() {
     return (
         <section className="py-16 md:py-32">
             <div className="container mx-auto px-6">
+                {/* 功能区域占位符虚线框 */}
+                <div className="mb-16 border-4 border-dashed border-muted-foreground/30 rounded-2xl bg-muted/5 p-12 text-center">
+                    <div className="space-y-4">
+                        <div className="mx-auto size-16 rounded-full border-2 border-dashed border-muted-foreground/40 flex items-center justify-center">
+                            <svg className="size-8 text-muted-foreground/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                        </div>
+                        <div className="space-y-2">
+                            <h3 className="text-lg font-semibold text-muted-foreground/80">功能区域占位符</h3>
+                            <p className="text-sm text-muted-foreground/60">
+                                This is a placeholder for the main feature area.
+                                在这里添加主要功能展示内容
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <div className="mb-12 text-center">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Features</h2>
                     <p className="mt-4 text-muted-foreground">Discover the powerful capabilities that make GitBase the perfect choice for modern web development</p>
