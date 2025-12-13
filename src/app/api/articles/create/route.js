@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { Octokit } from '@octokit/rest';
-import matter from 'gray-matter';
 
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN
@@ -42,19 +41,8 @@ export async function POST(request) {
       }
     }
 
-    // Create new file
-    const frontMatterData = {
-      title,
-      description,
-      date: new Date().toISOString(),
-    };
-
-    // Add category if provided
-    if (category) {
-      frontMatterData.category = category;
-    }
-
-    const fileContent = matter.stringify(content, frontMatterData);
+    // Create new file with content only (no front matter)
+    const fileContent = content;
 
     await octokit.repos.createOrUpdateFileContents({
       owner,
@@ -64,8 +52,14 @@ export async function POST(request) {
       content: Buffer.from(fileContent).toString('base64'),
     });
 
-    // Sync articles
-    await syncArticles();
+    // Add article metadata to articles.json
+    await addArticleToIndex({
+      title,
+      description,
+      date: new Date().toISOString(),
+      category: category || null,
+      path: `data/md/${slug}.md`
+    });
 
     return NextResponse.json({ message: 'Article created successfully' });
   } catch (error) {
@@ -75,65 +69,67 @@ export async function POST(request) {
 }
 
 
-async function syncArticles() {
+async function addArticleToIndex(articleData) {
   try {
-    // Fetch all MD files
-    const { data: files } = await octokit.repos.getContent({
-      owner,
-      repo,
-      path: mdFolderPath,
-    });
-
-    const mdFiles = files.filter(file => file.name.endsWith('.md'));
-
-    const articles = await Promise.all(mdFiles.map(async file => {
-      const { data } = await octokit.repos.getContent({
+    // Get current articles.json
+    let articles = [];
+    try {
+      const { data: currentFile } = await octokit.repos.getContent({
         owner,
         repo,
-        path: file.path,
+        path: articlesJsonPath,
       });
+      const content = Buffer.from(currentFile.content, 'base64').toString('utf8');
+      articles = JSON.parse(content);
+    } catch (error) {
+      // If file doesn't exist, start with empty array
+      if (error.status !== 404) {
+        throw error;
+      }
+    }
 
-      const content = Buffer.from(data.content, 'base64').toString('utf8');
-      const { data: frontMatter, content: articleContent } = matter(content);
-
-      // Fetch the last commit for this file
-      const { data: commits } = await octokit.repos.listCommits({
-        owner,
-        repo,
-        path: file.path,
-        per_page: 1
-      });
-
-      const lastModified = commits[0]?.commit.committer.date || data.sha;
-
-      return {
-        title: frontMatter.title,
-        description: frontMatter.description,
-        date: frontMatter.date,
-        category: frontMatter.category || null,
-        lastModified: lastModified,
-        path: file.path,
-      };
-    }));
+    // Add new article
+    const newArticle = {
+      ...articleData,
+      lastModified: new Date().toISOString()
+    };
+    articles.push(newArticle);
 
     // Update articles.json
-    const { data: currentFile } = await octokit.repos.getContent({
-      owner,
-      repo,
-      path: articlesJsonPath,
-    });
+    const content = JSON.stringify(articles, null, 2);
+    try {
+      // Try to update existing file
+      const { data: currentFile } = await octokit.repos.getContent({
+        owner,
+        repo,
+        path: articlesJsonPath,
+      });
 
-    await octokit.repos.createOrUpdateFileContents({
-      owner,
-      repo,
-      path: articlesJsonPath,
-      message: 'Sync articles',
-      content: Buffer.from(JSON.stringify(articles, null, 2)).toString('base64'),
-      sha: currentFile.sha,
-    });
+      await octokit.repos.createOrUpdateFileContents({
+        owner,
+        repo,
+        path: articlesJsonPath,
+        message: `Add article: ${articleData.title}`,
+        content: Buffer.from(content).toString('base64'),
+        sha: currentFile.sha,
+      });
+    } catch (error) {
+      // If file doesn't exist, create it
+      if (error.status === 404) {
+        await octokit.repos.createOrUpdateFileContents({
+          owner,
+          repo,
+          path: articlesJsonPath,
+          message: `Create articles.json and add article: ${articleData.title}`,
+          content: Buffer.from(content).toString('base64'),
+        });
+      } else {
+        throw error;
+      }
+    }
 
   } catch (error) {
-    console.error('Error syncing articles:', error);
+    console.error('Error adding article to index:', error);
     throw error;
   }
 }

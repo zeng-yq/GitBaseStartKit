@@ -1,8 +1,3 @@
----
-title: "Installing and Deploying GitBase: A Step-by-Step Guide"
-description: "A comprehensive guide for setting up GitBase locally and deploying it to Vercel, suitable for beginners."
-date: "2024-08-11"
----
 
 # Installing and Deploying GitBase: A Step-by-Step Guide
 

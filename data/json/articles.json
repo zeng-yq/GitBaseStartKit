@@ -4,7 +4,7 @@
     "description": "How to access the admin panel and manage your resource list in GitBase",
     "date": "2024-08-11T13:14:40.737Z",
     "category": "tutorial",
-    "lastModified": "2025-12-12T13:28:53.660Z",
+    "lastModified": "2025-12-13T13:35:15.850Z",
     "path": "data/md/accessing-admin-managing-resources.md"
   },
   {
@@ -12,7 +12,7 @@
     "description": "How to configure GitBase environment variables",
     "date": "2024-08-11T13:08:05.474Z",
     "category": null,
-    "lastModified": "2025-12-12T11:38:55.435Z",
+    "lastModified": "2025-12-13T13:35:15.853Z",
     "path": "data/md/environment-variables.md"
   },
   {
@@ -20,7 +20,7 @@
     "description": "A comprehensive guide for setting up GitBase locally and deploying it to Vercel, suitable for beginners.",
     "date": "2024-08-11",
     "category": null,
-    "lastModified": "2025-12-12T11:38:55.436Z",
+    "lastModified": "2025-12-13T13:35:15.855Z",
     "path": "data/md/gitbase-install-guide.md"
   },
   {
@@ -28,7 +28,7 @@
     "description": "Explore the features and implementation of GitBase, an innovative open-source project that combines Next.js, Tailwind CSS, and GitHub API for content management.",
     "date": "2024-08-11",
     "category": null,
-    "lastModified": "2025-12-12T11:38:55.436Z",
+    "lastModified": "2025-12-13T13:35:15.856Z",
     "path": "data/md/gitbase-introduction.md"
   },
   {
@@ -36,7 +36,7 @@
     "description": "hello",
     "date": "2025-06-29T04:30:40.951Z",
     "category": null,
-    "lastModified": "2025-12-12T11:38:55.437Z",
+    "lastModified": "2025-12-13T13:35:15.858Z",
     "path": "data/md/hello.md"
   },
   {
@@ -44,7 +44,7 @@
     "description": "Hi, I'm Qiayue, creator of GitBase. I'm excited to welcome you to our project and look forward to your contributions in making GitBase even better!",
     "date": "2024-08-16T03:57:46.153Z",
     "category": null,
-    "lastModified": "2025-12-12T11:38:55.437Z",
+    "lastModified": "2025-12-13T13:35:15.859Z",
     "path": "data/md/how-to-contributing-to-gitbase.md"
   },
   {
@@ -52,7 +52,7 @@
     "description": "This guide will walk you through the process of viewing, editing, and creating new articles using the admin panel.",
     "date": "2024-08-11T13:16:44.231Z",
     "category": null,
-    "lastModified": "2025-12-12T11:38:55.438Z",
+    "lastModified": "2025-12-13T13:35:15.862Z",
     "path": "data/md/managing-articles.md"
   }
 ]

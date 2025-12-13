@@ -1,8 +1,3 @@
----
-title: "GitBase: A Dynamic, Database-Free Website Solution"
-description: "Explore the features and implementation of GitBase, an innovative open-source project that combines Next.js, Tailwind CSS, and GitHub API for content management."
-date: "2024-08-11"
----
 
 # GitBase: A Dynamic, Database-Free Website Solution
 

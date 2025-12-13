@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { Octokit } from '@octokit/rest';
-import matter from 'gray-matter';
 import fs from 'fs';
 import path from 'path';
 
@@ -32,11 +31,24 @@ export async function GET(request) {
         try {
           const fullPath = path.join(process.cwd(), decodeURIComponent(pathParam));
           const content = fs.readFileSync(fullPath, 'utf8');
-          const { data: frontMatter, content: articleContent } = matter(content);
+
+          // Read metadata from articles.json
+          let articles = [];
+          try {
+            const articlesContent = fs.readFileSync(localArticlesJsonPath, 'utf8');
+            articles = JSON.parse(articlesContent);
+          } catch (e) {
+            console.error('Error reading articles.json:', e);
+          }
+
+          const article = articles.find(a => a.path === pathParam);
 
           return NextResponse.json({
-            ...frontMatter,
-            content: articleContent,
+            title: article?.title || '',
+            description: article?.description || '',
+            date: article?.date || '',
+            category: article?.category || null,
+            content: content,
             path: pathParam,
           });
         } catch (error) {
@@ -53,11 +65,29 @@ export async function GET(request) {
         });
 
         const content = Buffer.from(data.content, 'base64').toString('utf8');
-        const { data: frontMatter, content: articleContent } = matter(content);
+
+        // Read metadata from articles.json
+        let articles = [];
+        try {
+          const { data: articlesFile } = await octokit.repos.getContent({
+            owner,
+            repo,
+            path: articlesJsonPath,
+          });
+          const articlesContent = Buffer.from(articlesFile.content, 'base64').toString('utf8');
+          articles = JSON.parse(articlesContent);
+        } catch (e) {
+          console.error('Error reading articles.json from GitHub:', e);
+        }
+
+        const article = articles.find(a => a.path === pathParam);
 
         return NextResponse.json({
-          ...frontMatter,
-          content: articleContent,
+          title: article?.title || '',
+          description: article?.description || '',
+          date: article?.date || '',
+          category: article?.category || null,
+          content: content,
           path: data.path,
         });
       } catch (error) {
@@ -122,14 +152,14 @@ export async function POST(request) {
   const { article } = await request.json();
 
   try {
-    // Update the MD file
+    // Update the MD file with content only
     await updateMdFile(article);
 
-    // Sync articles
+    // Update metadata in articles.json
     if (!owner || !repo) {
-      await syncLocalArticles();
+      await updateArticleMetadataLocal(article);
     } else {
-      await syncArticles();
+      await updateArticleMetadataGitHub(article);
     }
 
     return NextResponse.json({ message: 'Article updated successfully' });
@@ -150,16 +180,21 @@ async function syncArticles() {
 
     const mdFiles = files.filter(file => file.name.endsWith('.md'));
 
-    const articles = await Promise.all(mdFiles.map(async file => {
-      const { data } = await octokit.repos.getContent({
+    // Get current articles.json to preserve metadata
+    let existingArticles = [];
+    try {
+      const { data: currentFile } = await octokit.repos.getContent({
         owner,
         repo,
-        path: file.path,
+        path: articlesJsonPath,
       });
+      const content = Buffer.from(currentFile.content, 'base64').toString('utf8');
+      existingArticles = JSON.parse(content);
+    } catch (error) {
+      console.log('No existing articles.json found, will create new one');
+    }
 
-      const content = Buffer.from(data.content, 'base64').toString('utf8');
-      const { data: frontMatter, content: articleContent } = matter(content);
-
+    const articles = await Promise.all(mdFiles.map(async file => {
       // Fetch the last commit for this file
       const { data: commits } = await octokit.repos.listCommits({
         owner,
@@ -168,33 +203,60 @@ async function syncArticles() {
         per_page: 1
       });
 
-      const lastModified = commits[0]?.commit.committer.date || data.sha;
+      const lastModified = commits[0]?.commit.committer.date;
 
-      return {
-        title: frontMatter.title,
-        description: frontMatter.description,
-        date: frontMatter.date,
-        category: frontMatter.category || null,
-        lastModified: lastModified,
-        path: file.path,
-      };
+      // Check if article already exists in index
+      const existingArticle = existingArticles.find(a => a.path === file.path);
+
+      if (existingArticle) {
+        // Update lastModified time
+        return {
+          ...existingArticle,
+          lastModified: lastModified || new Date().toISOString()
+        };
+      } else {
+        // Create minimal entry for new files
+        return {
+          title: file.name.replace('.md', ''),
+          description: '',
+          date: lastModified ? new Date(lastModified).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+          category: null,
+          lastModified: lastModified || new Date().toISOString(),
+          path: file.path,
+        };
+      }
     }));
 
     // Update articles.json
-    const { data: currentFile } = await octokit.repos.getContent({
-      owner,
-      repo,
-      path: articlesJsonPath,
-    });
+    try {
+      const { data: currentFile } = await octokit.repos.getContent({
+        owner,
+        repo,
+        path: articlesJsonPath,
+      });
 
-    await octokit.repos.createOrUpdateFileContents({
-      owner,
-      repo,
-      path: articlesJsonPath,
-      message: 'Sync articles',
-      content: Buffer.from(JSON.stringify(articles, null, 2)).toString('base64'),
-      sha: currentFile.sha,
-    });
+      await octokit.repos.createOrUpdateFileContents({
+        owner,
+        repo,
+        path: articlesJsonPath,
+        message: 'Sync articles',
+        content: Buffer.from(JSON.stringify(articles, null, 2)).toString('base64'),
+        sha: currentFile.sha,
+      });
+    } catch (error) {
+      if (error.status === 404) {
+        // Create new file if it doesn't exist
+        await octokit.repos.createOrUpdateFileContents({
+          owner,
+          repo,
+          path: articlesJsonPath,
+          message: 'Create articles.json',
+          content: Buffer.from(JSON.stringify(articles, null, 2)).toString('base64'),
+        });
+      } else {
+        throw error;
+      }
+    }
 
     // Also update local file
     fs.writeFileSync(localArticlesJsonPath, JSON.stringify(articles, null, 2));
@@ -210,20 +272,40 @@ async function syncLocalArticles() {
     // Get all MD files from local directory
     const mdFiles = fs.readdirSync(localMdFolderPath).filter(file => file.endsWith('.md'));
 
+    // Get current articles.json to preserve metadata
+    let existingArticles = [];
+    try {
+      const content = fs.readFileSync(localArticlesJsonPath, 'utf8');
+      existingArticles = JSON.parse(content);
+    } catch (error) {
+      console.error('Error reading existing articles.json:', error);
+    }
+
     const articles = mdFiles.map(file => {
       const filePath = path.join(localMdFolderPath, file);
-      const content = fs.readFileSync(filePath, 'utf8');
-      const { data: frontMatter } = matter(content);
       const stats = fs.statSync(filePath);
+      const articlePath = `data/md/${file}`;
 
-      return {
-        title: frontMatter.title,
-        description: frontMatter.description,
-        date: frontMatter.date,
-        category: frontMatter.category || null,
-        lastModified: stats.mtime.toISOString(),
-        path: `data/md/${file}`,
-      };
+      // Check if article already exists in index
+      const existingArticle = existingArticles.find(a => a.path === articlePath);
+
+      if (existingArticle) {
+        // Update lastModified time
+        return {
+          ...existingArticle,
+          lastModified: stats.mtime.toISOString()
+        };
+      } else {
+        // Create minimal entry for new files
+        return {
+          title: file.replace('.md', ''),
+          description: '',
+          date: stats.mtime.toISOString().split('T')[0],
+          category: null,
+          lastModified: stats.mtime.toISOString(),
+          path: articlePath,
+        };
+      }
     });
 
     // Update local articles.json
@@ -368,23 +450,12 @@ export async function PATCH(request) {
 
 async function updateMdFile(article) {
   try {
+    // Update MD file with content only (no front matter)
     if (!owner || !repo) {
       // Update local file
       const fullPath = path.join(process.cwd(), article.path);
-      const currentContent = fs.readFileSync(fullPath, 'utf8');
-      const { data: frontMatter } = matter(currentContent);
-
-      const updatedFrontMatter = {
-        ...frontMatter,
-        title: article.title,
-        description: article.description,
-        category: article.category !== undefined ? article.category : frontMatter.category,
-        lastModified: new Date().toISOString(),
-      };
-
-      const updatedContent = matter.stringify(article.content, updatedFrontMatter);
-      fs.writeFileSync(fullPath, updatedContent);
-      console.log(`Updated local article: ${article.path}`);
+      fs.writeFileSync(fullPath, article.content);
+      console.log(`Updated local article content: ${article.path}`);
     } else {
       // Update GitHub file
       const { data: currentFile } = await octokit.repos.getContent({
@@ -393,31 +464,91 @@ async function updateMdFile(article) {
         path: article.path,
       });
 
-      const currentContent = Buffer.from(currentFile.content, 'base64').toString('utf8');
-      const { data: frontMatter, content: articleContent } = matter(currentContent);
-
-      const updatedFrontMatter = {
-        ...frontMatter,
-        title: article.title,
-        description: article.description,
-        category: article.category !== undefined ? article.category : frontMatter.category,
-        lastModified: new Date().toISOString(),
-      };
-
-      const updatedContent = matter.stringify(article.content, updatedFrontMatter);
-
       await octokit.repos.createOrUpdateFileContents({
         owner,
         repo,
         path: article.path,
-        message: `Update article: ${article.title}`,
-        content: Buffer.from(updatedContent).toString('base64'),
+        message: `Update article content: ${article.title}`,
+        content: Buffer.from(article.content).toString('base64'),
         sha: currentFile.sha,
       });
     }
 
   } catch (error) {
     console.error('Error updating MD file:', error);
+    throw error;
+  }
+}
+
+async function updateArticleMetadataLocal(article) {
+  try {
+    let articles = [];
+    try {
+      const content = fs.readFileSync(localArticlesJsonPath, 'utf8');
+      articles = JSON.parse(content);
+    } catch (error) {
+      console.error('Error reading local articles.json:', error);
+      throw error;
+    }
+
+    const articleIndex = articles.findIndex(a => a.path === article.path);
+    if (articleIndex >= 0) {
+      articles[articleIndex] = {
+        ...articles[articleIndex],
+        title: article.title,
+        description: article.description,
+        category: article.category,
+        lastModified: new Date().toISOString()
+      };
+    }
+
+    fs.writeFileSync(localArticlesJsonPath, JSON.stringify(articles, null, 2));
+    console.log(`Updated metadata for article: ${article.path}`);
+  } catch (error) {
+    console.error('Error updating local article metadata:', error);
+    throw error;
+  }
+}
+
+async function updateArticleMetadataGitHub(article) {
+  try {
+    // Get current articles.json from GitHub
+    let articles = [];
+    try {
+      const { data: currentFile } = await octokit.repos.getContent({
+        owner,
+        repo,
+        path: articlesJsonPath,
+      });
+      const content = Buffer.from(currentFile.content, 'base64').toString('utf8');
+      articles = JSON.parse(content);
+
+      const articleIndex = articles.findIndex(a => a.path === article.path);
+      if (articleIndex >= 0) {
+        articles[articleIndex] = {
+          ...articles[articleIndex],
+          title: article.title,
+          description: article.description,
+          category: article.category,
+          lastModified: new Date().toISOString()
+        };
+      }
+
+      // Update articles.json on GitHub
+      await octokit.repos.createOrUpdateFileContents({
+        owner,
+        repo,
+        path: articlesJsonPath,
+        message: `Update metadata for article: ${article.title}`,
+        content: Buffer.from(JSON.stringify(articles, null, 2)).toString('base64'),
+        sha: currentFile.sha,
+      });
+    } catch (error) {
+      console.error('Error updating GitHub article metadata:', error);
+      throw error;
+    }
+  } catch (error) {
+    console.error('Error updating GitHub article metadata:', error);
     throw error;
   }
 }
