@@ -4,6 +4,7 @@ import path from 'path'
 import { getSortedPostsData } from '@/lib/posts'
 import ResourceList from '@/components/ResourceList'
 import ArticleList from '@/components/ArticleList'
+import { Features } from '@/components/Features'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -50,6 +51,7 @@ export default function Home() {
         </p>
       </section>
 
+      <Features />
       <ResourceList resources={resources} />
       <ArticleList articles={allPostsData} />
     </div>

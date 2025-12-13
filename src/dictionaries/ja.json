@@ -14,6 +14,13 @@
     "moreArticles": "もっと見る",
     "moreResources": "もっと見る"
   },
+  "features": {
+    "title": "機能",
+    "customizable": "完全カスタマイズ可能",
+    "secure": "デフォルトで安全",
+    "fast": "光速より速い",
+    "collaborative": "大切な人を守る"
+  },
   "articles": {
     "title": "記事",
     "noCategory": "カテゴリーなし"

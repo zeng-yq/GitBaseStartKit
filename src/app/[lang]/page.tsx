@@ -4,6 +4,7 @@ import path from 'path'
 import { getSortedPostsData } from '@/lib/posts'
 import ResourceList from '@/components/ResourceList'
 import ArticleList from '@/components/ArticleList'
+import { Features } from '@/components/Features'
 import { Metadata } from 'next'
 import { i18n, type Locale } from '@/lib/i18n-config'
 import { getDictionary } from '@/lib/get-dictionary'
@@ -66,6 +67,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </p>
       </section>
 
+      <Features />
       <ResourceList resources={resources} />
       <ArticleList articles={allPostsData} />
     </div>

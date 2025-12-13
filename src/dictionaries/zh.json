@@ -14,6 +14,13 @@
     "moreArticles": "更多文章",
     "moreResources": "更多资源"
   },
+  "features": {
+    "title": "功能特性",
+    "customizable": "完全可定制",
+    "secure": "默认安全",
+    "fast": "超快速度",
+    "collaborative": "保护您的挚爱"
+  },
   "articles": {
     "title": "文章",
     "noCategory": "无分类"

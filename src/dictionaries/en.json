@@ -14,6 +14,13 @@
     "moreArticles": "More articles",
     "moreResources": "More resources"
   },
+  "features": {
+    "title": "Features",
+    "customizable": "Customizable",
+    "secure": "Secure by default",
+    "fast": "Faster than light",
+    "collaborative": "Keep your loved ones safe"
+  },
   "articles": {
     "title": "Articles",
     "noCategory": "No Category"
