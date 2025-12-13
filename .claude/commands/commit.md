@@ -10,4 +10,4 @@ description: Generate commit message and commit
    - 描述需要清楚说明「做了什么」以及「为什么」，并且用中文
 4. 询问我是否要执行 commit
 
-请不要直接 commit，先让我确认 message。
+直接 commit，不需要通过我确认 message。
