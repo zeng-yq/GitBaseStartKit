@@ -167,7 +167,7 @@ export function Features() {
                         <Card className="relative col-span-full overflow-hidden lg:col-span-3">
                             <CardContent className="grid h-full pt-2 sm:grid-cols-2">
                                 <div className="relative z-10 flex flex-col justify-between space-y-6 lg:space-y-3">
-                                    <div className="relative flex aspect-square size-12 rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
+                                    <div className="relative flex aspect-square size-12 rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5 mt-4">
                                         <Users className="m-auto size-6" strokeWidth={1} />
                                     </div>
                                     <div className="space-y-2">
@@ -189,7 +189,7 @@ export function Features() {
                                         </svg>
 
                                         {/* 顶部节点 */}
-                                        <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-2 text-center">
+                                        <div className="absolute left-1/2 top-2 -translate-x-1/2 text-center">
                                             <div className="ring-background size-10 ring-4">
                                                 <img className="size-full rounded-full" src="https://avatars.githubusercontent.com/u/102558960?v=4" alt="" />
                                             </div>
