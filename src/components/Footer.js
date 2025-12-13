@@ -7,7 +7,10 @@ export function Footer() {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-sm font-semibold text-gray-600 tracking-wider uppercase">About</h3>
+            <div className="flex items-center space-x-2">
+              <img src="/favicon.svg" alt="GitBase" className="h-8 w-8" />
+              <span className="inline-block font-bold text-gray-600">GitBase</span>
+            </div>
             <p className="mt-4 text-base text-gray-500">
               GitBase is an open-source dynamic website solution without a traditional database, built with Next.js and powered by GitHub.
             </p>
