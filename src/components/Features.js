@@ -125,8 +125,8 @@ export function Features() {
                             </CardContent>
                         </Card>
                         <Card className="relative col-span-full overflow-hidden lg:col-span-3">
-                            <CardContent className="grid pt-6 sm:grid-cols-2">
-                                <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
+                            <CardContent className="grid pt-2 sm:grid-cols-2">
+                                <div className="relative z-10 flex flex-col justify-between space-y-6 lg:space-y-3">
                                     <div className="relative flex aspect-square size-12 rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
                                         <Shield className="m-auto size-5" strokeWidth={1} />
                                     </div>
@@ -135,7 +135,7 @@ export function Features() {
                                         <p className="text-foreground">Provident fugit vero voluptate. Voluptates a sapiente inventore nisi.</p>
                                     </div>
                                 </div>
-                                <div className="rounded-tl-(--radius) relative -mb-6 -mr-6 mt-6 h-fit border-l border-t p-6 py-6 sm:ml-6">
+                                <div className="rounded-tl-(--radius) relative -mb-6 -mr-6 mt-4 h-fit border-l border-t p-4 py-4 sm:ml-6">
                                     <div className="absolute left-3 top-2 flex gap-1">
                                         <span className="block size-2 rounded-full border dark:border-white/10 dark:bg-white/10"></span>
                                         <span className="block size-2 rounded-full border dark:border-white/10 dark:bg-white/10"></span>
@@ -165,8 +165,8 @@ export function Features() {
                             </CardContent>
                         </Card>
                         <Card className="relative col-span-full overflow-hidden lg:col-span-3">
-                            <CardContent className="grid h-full pt-6 sm:grid-cols-2">
-                                <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
+                            <CardContent className="grid h-full pt-2 sm:grid-cols-2">
+                                <div className="relative z-10 flex flex-col justify-between space-y-6 lg:space-y-3">
                                     <div className="relative flex aspect-square size-12 rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
                                         <Users className="m-auto size-6" strokeWidth={1} />
                                     </div>
@@ -175,8 +175,8 @@ export function Features() {
                                         <p className="text-foreground">Voluptate. magnam magni doloribus dolores voluptates a sapiente inventore nisi.</p>
                                     </div>
                                 </div>
-                                <div className="relative flex h-full items-center justify-center py-8">
-                                    <div className="relative size-64">
+                                <div className="relative flex h-full items-center justify-center py-4">
+                                    <div className="relative size-48">
                                         {/* 辐射连接线 */}
                                         <svg className="absolute inset-0 size-full" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             {/* 从中心向外的6条辐射线 */}
