@@ -50,6 +50,12 @@ export default function ArticleList({ articles, showMoreLink = true, locale }) {
                   src={`/images/articles/${id}-cover.jpg`}
                   alt={title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                  style={{
+                    backgroundImage: `url('/images/default-article-cover.svg')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
                   onError={(e) => {
                     // 如果图片加载失败，显示默认封面
                     e.target.src = '/images/default-article-cover.svg';
