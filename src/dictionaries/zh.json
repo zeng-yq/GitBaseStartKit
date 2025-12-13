@@ -159,5 +159,15 @@
       "switch": "切换到{language}",
       "dismiss": "继续使用{currentLanguage}"
     }
+  },
+  "privacyPolicy": {
+    "title": "隐私政策",
+    "description": "GitBase 隐私政策",
+    "lastUpdated": "最后更新："
+  },
+  "termsOfService": {
+    "title": "服务条款",
+    "description": "GitBase 服务条款",
+    "lastUpdated": "最后更新："
   }
 }

@@ -159,5 +159,15 @@
       "switch": "{language}に切り替える",
       "dismiss": "{currentLanguage}のまま続ける"
     }
+  },
+  "privacyPolicy": {
+    "title": "プライバシーポリシー",
+    "description": "GitBase プライバシーポリシー",
+    "lastUpdated": "最終更新："
+  },
+  "termsOfService": {
+    "title": "利用規約",
+    "description": "GitBase 利用規約",
+    "lastUpdated": "最終更新："
   }
 }

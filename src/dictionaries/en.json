@@ -159,5 +159,67 @@
       "switch": "Switch to {language}",
       "dismiss": "Continue in {currentLanguage}"
     }
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "description": "GitBase Privacy Policy",
+    "lastUpdated": "Last updated:",
+    "sections": {
+      "informationCollection": {
+        "title": "Information Collection",
+        "content": "We are committed to protecting your privacy. GitBase, as an open-source project, only collects necessary technical information to improve the service experience."
+      },
+      "informationUsage": {
+        "title": "Information Usage",
+        "content": "The collected information is only used to improve website performance, user experience, and technical support. We do not sell your information to third parties."
+      },
+      "dataSecurity": {
+        "title": "Data Security",
+        "content": "We use industry-standard security measures to protect your data, ensuring the security and integrity of information."
+      },
+      "cookieUsage": {
+        "title": "Cookie Usage",
+        "content": "We may use cookies to improve user experience. You can manage cookie preferences through your browser settings."
+      },
+      "contactUs": {
+        "title": "Contact Us",
+        "content": "If you have any privacy-related questions, please contact us through our GitHub repository."
+      }
+    }
+  },
+  "termsOfService": {
+    "title": "Terms of Service",
+    "description": "GitBase Terms of Service",
+    "lastUpdated": "Last updated:",
+    "sections": {
+      "serviceOverview": {
+        "title": "Service Overview",
+        "content": "GitBase is an open-source dynamic website content management system that operates without a traditional database. Using this service indicates your agreement to comply with the following terms."
+      },
+      "termsOfUse": {
+        "title": "Terms of Use",
+        "content": "You must comply with all applicable laws and regulations and must not use this service for any illegal or unauthorized purposes."
+      },
+      "contentResponsibility": {
+        "title": "Content Responsibility",
+        "content": "Users are fully responsible for the content they publish. We reserve the right to remove content that violates our policies."
+      },
+      "intellectualProperty": {
+        "title": "Intellectual Property",
+        "content": "GitBase is released under an open-source license. When using it, you must comply with the corresponding open-source agreement terms."
+      },
+      "disclaimer": {
+        "title": "Disclaimer",
+        "content": "This service is provided \"as is\" without any express or implied warranties. We are not responsible for service interruptions or data loss."
+      },
+      "serviceChanges": {
+        "title": "Service Changes",
+        "content": "We reserve the right to modify or terminate the service at any time. Important changes will be notified to users in advance."
+      },
+      "contactUs": {
+        "title": "Contact Us",
+        "content": "If you have any questions, please contact us through our GitHub repository."
+      }
+    }
   }
 }
