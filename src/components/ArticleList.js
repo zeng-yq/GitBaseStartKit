@@ -40,23 +40,61 @@ export default function ArticleList({ articles, showMoreLink = true, locale }) {
           </Link>
         )}
       </div>
-      <div className="space-y-6">
-        {articles.map(({ id, title, description, category }) => (
-          <Card key={id}>
-            <CardHeader>
-              <div className="flex items-center gap-2 mb-2">
-                {category && <CategoryBadge category={category} categories={categories} />}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {articles.map(({ id, title, description, category, date }) => (
+          <Link key={id} href={getLocalizedPath(`/posts/${id}`)} className="group">
+            <Card className="h-full flex flex-col hover:shadow-lg transition-all duration-300 overflow-hidden">
+              {/* 封面图区域 */}
+              <div className="relative aspect-video overflow-hidden bg-gray-100">
+                <img
+                  src={`/images/articles/${id}-cover.jpg`}
+                  alt={title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  onError={(e) => {
+                    // 如果图片加载失败，显示默认封面
+                    e.target.src = '/images/default-article-cover.svg';
+                    e.target.onerror = null; // 防止无限循环
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              <Link
-                href={getLocalizedPath(`/posts/${id}`)}
-                className="text-blue-600 hover:text-blue-800 transition-colors inline-flex items-center gap-1"
-              >
-                <CardTitle>{title}</CardTitle>
-                →
-              </Link>
-              <CardDescription>{description}</CardDescription>
-            </CardHeader>
-          </Card>
+
+              {/* 内容区域 */}
+              <div className="flex-1 p-6 flex flex-col">
+                {/* 分类标签和发布日期 */}
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    {category && <CategoryBadge category={category} categories={categories} />}
+                  </div>
+                  <time className="text-xs text-muted-foreground">
+                    {new Date(date).toLocaleDateString(currentLocale, {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric'
+                    })}
+                  </time>
+                </div>
+
+                {/* 标题 */}
+                <CardTitle className="text-lg font-semibold mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                  {title}
+                </CardTitle>
+
+                {/* 描述 */}
+                <CardDescription className="line-clamp-3 flex-1">
+                  {description}
+                </CardDescription>
+
+                {/* 阅读更多 */}
+                <div className="flex items-center text-blue-600 text-sm font-medium mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  阅读更多
+                  <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </Card>
+          </Link>
         ))}
       </div>
     </section>

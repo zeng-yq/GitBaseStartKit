@@ -1,0 +1,44 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="450" fill="#F3F4F6"/>
+
+  <!-- 渐变定义 -->
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+
+  <!-- 背景装饰 -->
+  <rect width="800" height="450" fill="url(#gradient1)"/>
+
+  <!-- 圆圈装饰 -->
+  <circle cx="700" cy="100" r="80" fill="#3B82F6" fill-opacity="0.05"/>
+  <circle cx="100" cy="350" r="120" fill="#8B5CF6" fill-opacity="0.05"/>
+
+  <!-- 文章图标 -->
+  <g transform="translate(400, 180)">
+    <!-- 文档背景 -->
+    <rect x="-60" y="-80" width="120" height="160" rx="8" fill="white" filter="drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1))"/>
+
+    <!-- 文档线条 -->
+    <rect x="-40" y="-60" width="80" height="8" rx="2" fill="#E5E7EB"/>
+    <rect x="-40" y="-45" width="60" height="6" rx="2" fill="#E5E7EB"/>
+    <rect x="-40" y="-35" width="70" height="6" rx="2" fill="#E5E7EB"/>
+    <rect x="-40" y="-25" width="50" height="6" rx="2" fill="#E5E7EB"/>
+    <rect x="-40" y="-15" width="65" height="6" rx="2" fill="#E5E7EB"/>
+    <rect x="-40" y="-5" width="55" height="6" rx="2" fill="#E5E7EB"/>
+    <rect x="-40" y="5" width="75" height="6" rx="2" fill="#E5E7EB"/>
+    <rect x="-40" y="15" width="45" height="6" rx="2" fill="#E5E7EB"/>
+    <rect x="-40" y="25" width="60" height="6" rx="2" fill="#E5E7EB"/>
+    <rect x="-40" y="35" width="70" height="6" rx="2" fill="#E5E7EB"/>
+
+    <!-- 标题线条（加粗） -->
+    <rect x="-40" y="-60" width="80" height="8" rx="2" fill="#3B82F6"/>
+  </g>
+
+  <!-- 底部文字 -->
+  <text x="400" y="320" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="#6B7280" text-anchor="middle">StartKit Blog</text>
+  <text x="400" y="345" font-family="Arial, sans-serif" font-size="14" fill="#9CA3AF" text-anchor="middle">Article Preview</text>
+</svg>
