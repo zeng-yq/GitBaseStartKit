@@ -1,8 +1,8 @@
-# GitBase
+# StartKit
 
-[GitBase](https://gitbase.app/) 是一个开源的动态网站解决方案，无需传统数据库，采用 Next.js、Tailwind CSS 和 Shadcn/UI 构建。它利用 GitHub 作为内容管理系统，为创建和管理网站内容提供了无缝的方式。
+[StartKit](https://gitbase.app/) 是一个开源的动态网站解决方案，无需传统数据库，采用 Next.js、Tailwind CSS 和 Shadcn/UI 构建。它利用 GitHub 作为内容管理系统，为创建和管理网站内容提供了无缝的方式。
 
-![GitBase](https://toimg.xyz/file/5aa892c8e8385232fcdf3.png)
+![StartKit](https://toimg.xyz/file/5aa892c8e8385232fcdf3.png)
 
 
 ## 在 Vercel 上部署

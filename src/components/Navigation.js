@@ -102,10 +102,10 @@ export function Navigation() {
           <Link href={getLocalizedPath('/')} className="flex items-center space-x-2">
             <img
               src="/favicon.svg"
-              alt="GitBase Logo"
+              alt="StartKit Logo"
               className="h-8 w-8"
             />
-            <span className="inline-block font-bold">GitBase</span>
+            <span className="inline-block font-bold">StartKit</span>
           </Link>
           <nav className="hidden md:flex gap-6">
             {navItems.map((item) => {

@@ -26,7 +26,7 @@ export function Features() {
                 </div>
                 <div className="mb-12 text-center">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Features</h2>
-                    <p className="mt-4 text-muted-foreground">Discover the powerful capabilities that make GitBase the perfect choice for modern web development</p>
+                    <p className="mt-4 text-muted-foreground">Discover the powerful capabilities that make StartKit the perfect choice for modern web development</p>
                 </div>
                 <div className="relative">
                     <div className="relative z-10 grid grid-cols-6 gap-3">

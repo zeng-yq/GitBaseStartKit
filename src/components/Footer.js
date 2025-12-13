@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 
 const footerText = {
   en: {
-    description: "GitBase is an open-source dynamic website solution without a traditional database, built with Next.js and powered by GitHub.",
+    description: "StartKit is an open-source dynamic website solution without a traditional database, built with Next.js and powered by GitHub.",
     quickLinks: "Quick Links",
     connect: "Connect",
     home: "Home",
@@ -16,10 +16,10 @@ const footerText = {
     articles: "Articles",
     privacy: "Privacy Policy",
     terms: "Terms of Service",
-    copyright: "© {year} GitBase. All rights reserved."
+    copyright: "© {year} StartKit. All rights reserved."
   },
   zh: {
-    description: "GitBase 是一个开源的动态网站解决方案，无需传统数据库，基于 Next.js 构建，由 GitHub 提供支持。",
+    description: "StartKit 是一个开源的动态网站解决方案，无需传统数据库，基于 Next.js 构建，由 GitHub 提供支持。",
     quickLinks: "快速链接",
     connect: "联系方式",
     home: "首页",
@@ -27,10 +27,10 @@ const footerText = {
     articles: "文章",
     privacy: "隐私政策",
     terms: "服务条款",
-    copyright: "© {year} GitBase. 保留所有权利。"
+    copyright: "© {year} StartKit. 保留所有权利。"
   },
   ja: {
-    description: "GitBaseは、従来のデータベースを使用しないオープンソースの動的Webサイトソリューションです。Next.jsで構築され、GitHubによって提供されます。",
+    description: "StartKitは、従来のデータベースを使用しないオープンソースの動的Webサイトソリューションです。Next.jsで構築され、GitHubによって提供されます。",
     quickLinks: "クイックリンク",
     connect: "接続",
     home: "ホーム",
@@ -38,7 +38,7 @@ const footerText = {
     articles: "記事",
     privacy: "プライバシーポリシー",
     terms: "利用規約",
-    copyright: "© {year} GitBase. すべての権利を保有。"
+    copyright: "© {year} StartKit. すべての権利を保有。"
   }
 };
 
@@ -78,8 +78,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center space-x-2">
-              <img src="/favicon.svg" alt="GitBase" className="h-8 w-8" />
-              <span className="inline-block font-bold text-gray-600">GitBase</span>
+              <img src="/favicon.svg" alt="StartKit" className="h-8 w-8" />
+              <span className="inline-block font-bold text-gray-600">StartKit</span>
             </div>
             <p className="mt-4 text-base text-gray-500">
               {text.description}
@@ -110,7 +110,7 @@ export function Footer() {
             <ul className="mt-4 space-y-4">
               <li>
                 <a href="https://gitbase.app/" target="_blank" className="text-base text-gray-500 hover:text-gray-900">
-                  GitBase
+                  StartKit
                 </a>
               </li>
               <li>

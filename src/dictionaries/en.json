@@ -8,9 +8,9 @@
     "logout": "Logout"
   },
   "home": {
-    "title": "GitBase",
+    "title": "StartKit",
     "subtitle": "Open Source Dynamic Website CMS Without Database",
-    "description": "GitBase is a dynamic, database-free website built with Next.js.",
+    "description": "StartKit is a dynamic, database-free website built with Next.js.",
     "moreArticles": "More articles",
     "moreResources": "More resources"
   },
@@ -67,28 +67,28 @@
     "subtitle": "Have another question? Contact us at support@example.com",
     "items": [
       {
-        "question": "What is GitBase?",
-        "answer": "GitBase is an open-source dynamic website CMS that operates without a database. It's built with Next.js, Tailwind CSS, and Shadcn/UI."
+        "question": "What is StartKit?",
+        "answer": "StartKit is an open-source dynamic website CMS that operates without a database. It's built with Next.js, Tailwind CSS, and Shadcn/UI."
       },
       {
         "question": "Do I need a database?",
-        "answer": "No, GitBase doesn't require a traditional database. It uses GitHub API for content management, making it lightweight and easy to deploy."
+        "answer": "No, StartKit doesn't require a traditional database. It uses GitHub API for content management, making it lightweight and easy to deploy."
       },
       {
-        "question": "Is GitBase really free?",
-        "answer": "Yes, GitBase is completely free and open-source. You can use it for personal and commercial projects without any licensing fees."
+        "question": "Is StartKit really free?",
+        "answer": "Yes, StartKit is completely free and open-source. You can use it for personal and commercial projects without any licensing fees."
       },
       {
         "question": "How do I add content?",
         "answer": "Content is managed through GitHub. You can create, edit, and manage your articles and resources directly through the GitHub interface."
       },
       {
-        "question": "Can I contribute to GitBase?",
-        "answer": "Absolutely! GitBase is open-source and welcomes contributions. You can submit pull requests, report issues, or suggest new features."
+        "question": "Can I contribute to StartKit?",
+        "answer": "Absolutely! StartKit is open-source and welcomes contributions. You can submit pull requests, report issues, or suggest new features."
       },
       {
         "question": "What technologies are used?",
-        "answer": "GitBase is built with Next.js, Tailwind CSS for styling, and Shadcn/UI for components. It leverages GitHub's API for content management."
+        "answer": "StartKit is built with Next.js, Tailwind CSS for styling, and Shadcn/UI for components. It leverages GitHub's API for content management."
       }
     ]
   },
@@ -97,7 +97,7 @@
     "subtitle": "Real feedback from our amazing community",
     "items": [
       {
-        "text": "GitBase revolutionized our content management workflow. The database-free approach makes deployment incredibly simple, and GitHub integration transformed our team collaboration.",
+        "text": "StartKit revolutionized our content management workflow. The database-free approach makes deployment incredibly simple, and GitHub integration transformed our team collaboration.",
         "image": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
         "name": "Alex Thompson",
         "role": "Frontend Developer"
@@ -121,31 +121,31 @@
         "role": "Full Stack Developer"
       },
       {
-        "text": "As an open source maintainer, GitBase makes our project website look professional while being easy to maintain. The community feedback has been fantastic!",
+        "text": "As an open source maintainer, StartKit makes our project website look professional while being easy to maintain. The community feedback has been fantastic!",
         "image": "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face",
         "name": "Emily Martinez",
         "role": "Open Source Contributor"
       },
       {
-        "text": "Migrating from WordPress to GitBase was the best decision we made. Page load speeds improved by 300%, and maintenance costs are nearly zero.",
+        "text": "Migrating from WordPress to StartKit was the best decision we made. Page load speeds improved by 300%, and maintenance costs are nearly zero.",
         "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face",
         "name": "James Rodriguez",
         "role": "Content Creator"
       },
       {
-        "text": "GitBase's TypeScript support gives me confidence when customizing components. Type safety has significantly reduced development errors.",
+        "text": "StartKit's TypeScript support gives me confidence when customizing components. Type safety has significantly reduced development errors.",
         "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=150&h=150&fit=crop&crop=face",
         "name": "Robert Kim",
         "role": "TypeScript Enthusiast"
       },
       {
-        "text": "Our company's documentation site using GitBase increased our dev team's technical doc update frequency by 5x. The Git workflow is incredibly efficient!",
+        "text": "Our company's documentation site using StartKit increased our dev team's technical doc update frequency by 5x. The Git workflow is incredibly efficient!",
         "image": "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face",
         "name": "Lisa Anderson",
         "role": "Technical Documentation Manager"
       },
       {
-        "text": "As a designer, I appreciate GitBase's clean aesthetics. It lets content be the star, not distracted by complex CMS interfaces.",
+        "text": "As a designer, I appreciate StartKit's clean aesthetics. It lets content be the star, not distracted by complex CMS interfaces.",
         "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
         "name": "Jessica Park",
         "role": "UI/UX Designer"
@@ -162,12 +162,12 @@
   },
   "privacyPolicy": {
     "title": "Privacy Policy",
-    "description": "GitBase Privacy Policy",
+    "description": "StartKit Privacy Policy",
     "lastUpdated": "Last updated:",
     "sections": {
       "informationCollection": {
         "title": "Information Collection",
-        "content": "We are committed to protecting your privacy. GitBase, as an open-source project, only collects necessary technical information to improve the service experience."
+        "content": "We are committed to protecting your privacy. StartKit, as an open-source project, only collects necessary technical information to improve the service experience."
       },
       "informationUsage": {
         "title": "Information Usage",
@@ -189,12 +189,12 @@
   },
   "termsOfService": {
     "title": "Terms of Service",
-    "description": "GitBase Terms of Service",
+    "description": "StartKit Terms of Service",
     "lastUpdated": "Last updated:",
     "sections": {
       "serviceOverview": {
         "title": "Service Overview",
-        "content": "GitBase is an open-source dynamic website content management system that operates without a traditional database. Using this service indicates your agreement to comply with the following terms."
+        "content": "StartKit is an open-source dynamic website content management system that operates without a traditional database. Using this service indicates your agreement to comply with the following terms."
       },
       "termsOfUse": {
         "title": "Terms of Use",
@@ -206,7 +206,7 @@
       },
       "intellectualProperty": {
         "title": "Intellectual Property",
-        "content": "GitBase is released under an open-source license. When using it, you must comply with the corresponding open-source agreement terms."
+        "content": "StartKit is released under an open-source license. When using it, you must comply with the corresponding open-source agreement terms."
       },
       "disclaimer": {
         "title": "Disclaimer",

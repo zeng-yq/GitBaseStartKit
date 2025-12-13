@@ -8,9 +8,9 @@
     "logout": "登出"
   },
   "home": {
-    "title": "GitBase",
+    "title": "StartKit",
     "subtitle": "无需数据库的开源动态网站 CMS",
-    "description": "GitBase 是一个使用 Next.js、Tailwind CSS 和 Shadcn/UI 构建的动态无数据库网站，通过 GitHub API 提供无缝的内容管理系统。",
+    "description": "StartKit 是一个使用 Next.js、Tailwind CSS 和 Shadcn/UI 构建的动态无数据库网站，通过 GitHub API 提供无缝的内容管理系统。",
     "moreArticles": "更多文章",
     "moreResources": "更多资源"
   },
@@ -67,28 +67,28 @@
     "subtitle": "还有其他问题？联系我们：support@example.com",
     "items": [
       {
-        "question": "什么是 GitBase？",
-        "answer": "GitBase 是一个开源的动态网站内容管理系统，无需数据库运行。它使用 Next.js、Tailwind CSS 和 Shadcn/UI 构建。"
+        "question": "什么是 StartKit？",
+        "answer": "StartKit 是一个开源的动态网站内容管理系统，无需数据库运行。它使用 Next.js、Tailwind CSS 和 Shadcn/UI 构建。"
       },
       {
         "question": "我需要数据库吗？",
-        "answer": "不需要，GitBase 不需要传统数据库。它使用 GitHub API 进行内容管理，使其轻量且易于部署。"
+        "answer": "不需要，StartKit 不需要传统数据库。它使用 GitHub API 进行内容管理，使其轻量且易于部署。"
       },
       {
-        "question": "GitBase 真的免费吗？",
-        "answer": "是的，GitBase 完全免费且开源。您可以将其用于个人和商业项目，无需任何许可费用。"
+        "question": "StartKit 真的免费吗？",
+        "answer": "是的，StartKit 完全免费且开源。您可以将其用于个人和商业项目，无需任何许可费用。"
       },
       {
         "question": "如何添加内容？",
         "answer": "内容通过 GitHub 进行管理。您可以直接通过 GitHub 界面创建、编辑和管理您的文章和资源。"
       },
       {
-        "question": "我可以为 GitBase 做贡献吗？",
-        "answer": "当然！GitBase 是开源项目，欢迎贡献。您可以提交拉取请求、报告问题或建议新功能。"
+        "question": "我可以为 StartKit 做贡献吗？",
+        "answer": "当然！StartKit 是开源项目，欢迎贡献。您可以提交拉取请求、报告问题或建议新功能。"
       },
       {
         "question": "使用了哪些技术？",
-        "answer": "GitBase 使用 Next.js 构建，Tailwind CSS 进行样式设计，Shadcn/UI 提供组件。它利用 GitHub 的 API 进行内容管理。"
+        "answer": "StartKit 使用 Next.js 构建，Tailwind CSS 进行样式设计，Shadcn/UI 提供组件。它利用 GitHub 的 API 进行内容管理。"
       }
     ]
   },
@@ -97,7 +97,7 @@
     "subtitle": "来自我们优秀社区的真实反馈",
     "items": [
       {
-        "text": "GitBase 革命性地改变了我们的内容管理方式，无需数据库的设计让部署变得异常简单。GitHub 集成让团队协作变得前所未有的流畅。",
+        "text": "StartKit 革命性地改变了我们的内容管理方式，无需数据库的设计让部署变得异常简单。GitHub 集成让团队协作变得前所未有的流畅。",
         "image": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
         "name": "王小明",
         "role": "前端开发工程师"
@@ -121,31 +121,31 @@
         "role": "全栈开发者"
       },
       {
-        "text": "作为一个开源项目维护者，GitBase 让我们的项目网站看起来专业且易于维护。社区反馈一直很好！",
+        "text": "作为一个开源项目维护者，StartKit 让我们的项目网站看起来专业且易于维护。社区反馈一直很好！",
         "image": "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face",
         "name": "陈静",
         "role": "开源贡献者"
       },
       {
-        "text": "从 WordPress 迁移到 GitBase 是我们做过的最佳决定。页面加载速度提升了 300%，维护成本几乎为零。",
+        "text": "从 WordPress 迁移到 StartKit 是我们做过的最佳决定。页面加载速度提升了 300%，维护成本几乎为零。",
         "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face",
         "name": "赵敏",
         "role": "内容创作者"
       },
       {
-        "text": "GitBase 的 TypeScript 支持让我在自定义组件时感到非常安心。类型安全大大减少了开发中的错误。",
+        "text": "StartKit 的 TypeScript 支持让我在自定义组件时感到非常安心。类型安全大大减少了开发中的错误。",
         "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=150&h=150&fit=crop&crop=face",
         "name": "孙涛",
         "role": "TypeScript 爱好者"
       },
       {
-        "text": "我们公司的文档网站使用 GitBase 后，开发团队的技术文档更新频率提高了 5 倍。Git 工作流真的很高效！",
+        "text": "我们公司的文档网站使用 StartKit 后，开发团队的技术文档更新频率提高了 5 倍。Git 工作流真的很高效！",
         "image": "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face",
         "name": "周芳",
         "role": "技术文档经理"
       },
       {
-        "text": "作为一个设计师，我欣赏 GitBase 的简洁美学。它让内容成为主角，而不是被复杂的 CMS 界面分散注意力。",
+        "text": "作为一个设计师，我欣赏 StartKit 的简洁美学。它让内容成为主角，而不是被复杂的 CMS 界面分散注意力。",
         "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
         "name": "吴艺",
         "role": "UI/UX 设计师"
@@ -162,12 +162,12 @@
   },
   "privacyPolicy": {
     "title": "隐私政策",
-    "description": "GitBase 隐私政策",
+    "description": "StartKit 隐私政策",
     "lastUpdated": "最后更新："
   },
   "termsOfService": {
     "title": "服务条款",
-    "description": "GitBase 服务条款",
+    "description": "StartKit 服务条款",
     "lastUpdated": "最后更新："
   }
 }
