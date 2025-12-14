@@ -9,3 +9,4 @@ description: Generate commit message and commit
    - type: FEAT/FIX/REFACTOR/DOCS/TEST
    - 描述需要清楚说明「做了什么」以及「为什么」，并且用中文
 4. 直接执行 commit，不需要通过我确认 message。
+5. 输出提交的 message
