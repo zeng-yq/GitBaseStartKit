@@ -23,7 +23,8 @@
   },
   "articles": {
     "title": "Articles",
-    "noCategory": "No Category"
+    "noCategory": "No Category",
+    "readMore": "Read More"
   },
   "resources": {
     "title": "Resources",

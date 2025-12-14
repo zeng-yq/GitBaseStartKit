@@ -23,7 +23,8 @@
   },
   "articles": {
     "title": "記事",
-    "noCategory": "カテゴリーなし"
+    "noCategory": "カテゴリーなし",
+    "readMore": "続きを読む"
   },
   "resources": {
     "title": "リソース",

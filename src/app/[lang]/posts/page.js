@@ -25,7 +25,7 @@ export default async function Articles({ params }) {
 
   return (
     <div className="container mx-auto py-12">
-      <ArticleList articles={allPostsData} showMoreLink={false} locale={lang} />
+      <ArticleList articles={allPostsData} showMoreLink={false} locale={lang} dict={dict} />
     </div>
   )
 }

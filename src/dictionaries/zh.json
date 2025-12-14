@@ -23,7 +23,8 @@
   },
   "articles": {
     "title": "文章",
-    "noCategory": "无分类"
+    "noCategory": "无分类",
+    "readMore": "阅读更多"
   },
   "resources": {
     "title": "资源",

@@ -12,10 +12,13 @@ import {
 import CategoryBadge from './CategoryBadge'
 import { getLocaleFromPath, addLocaleToPath } from '@/lib/i18n-config'
 
-export default function ArticleList({ articles, showMoreLink = true, locale }) {
+export default function ArticleList({ articles, showMoreLink = true, locale, dict }) {
   const [categories, setCategories] = useState([])
   const pathname = usePathname()
   const currentLocale = locale || getLocaleFromPath(pathname) || 'en'  // Use provided locale or get from path
+
+  // Use dictionary from props, fallback to default English values
+  const text = dict?.articles || { title: 'Articles', readMore: 'Read More' }
 
   useEffect(() => {
     // Fetch categories
@@ -32,7 +35,7 @@ export default function ArticleList({ articles, showMoreLink = true, locale }) {
   return (
     <section>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold tracking-tighter">Articles</h2>
+        <h2 className="text-3xl font-bold tracking-tighter">{text.title}</h2>
         {showMoreLink && (
           <Link href={getLocalizedPath('/posts')} className="text-blue-600 hover:text-blue-800 transition-colors">
             More articles →
@@ -89,7 +92,7 @@ export default function ArticleList({ articles, showMoreLink = true, locale }) {
 
                 {/* 阅读更多 */}
                 <div className="flex items-center text-blue-600 text-sm font-medium mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  阅读更多
+                  {text.readMore}
                   <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
