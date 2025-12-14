@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
   Card,
-  CardHeader,
   CardTitle,
   CardDescription,
 } from "@/components/ui/card"
@@ -47,17 +46,13 @@ export default function ArticleList({ articles, showMoreLink = true, locale }) {
               {/* 封面图区域 */}
               <div className="relative aspect-video overflow-hidden bg-gray-100">
                 <img
-                  src={coverImage ? `/images/articles/${coverImage}` : `/images/articles/${id}-cover.jpg`}
+                  src={coverImage ? `/images/articles/${coverImage}` : '/images/default-article-cover.svg'}
                   alt={title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                   onError={(e) => {
-                    // 自定义封面失败 → 默认封面
+                    // 自定义封面失败 → 直接使用占位图
                     if (coverImage) {
-                      e.target.src = `/images/articles/${id}-cover.jpg`;
-                    }
-                    // 默认封面也失败 → 占位图
-                    else {
                       e.target.src = '/images/default-article-cover.svg';
                       e.target.onerror = null; // 防止无限循环
                     }
