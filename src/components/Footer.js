@@ -86,7 +86,7 @@ export function Footer() {
             </p>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-gray-600 tracking-wider uppercase">{text.quickLinks}</h3>
+            <div className="text-base font-semibold text-gray-600 tracking-wider uppercase">{text.quickLinks}</div>
             <ul className="mt-4 space-y-4">
               <li>
                 <Link href={addLocaleToPath("/", lang)} className="text-base text-gray-500 hover:text-gray-900">
@@ -106,7 +106,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-gray-600 tracking-wider uppercase">{text.connect}</h3>
+            <div className="text-base font-semibold text-gray-600 tracking-wider uppercase">{text.connect}</div>
             <ul className="mt-4 space-y-4">
               <li>
                 <a href="https://gitbase.app/" target="_blank" className="text-base text-gray-500 hover:text-gray-900">
