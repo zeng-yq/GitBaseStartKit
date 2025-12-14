@@ -1,8 +1,10 @@
 import fs from 'fs'
 import path from 'path'
 import { remark } from 'remark'
-import html from 'remark-html'
-import { i18n } from './i18n-config'
+import remarkRehype from 'remark-rehype'
+import rehypeStringify from 'rehype-stringify'
+import { remarkHighlightText, rehypeHighlightToMark } from './remark-highlight-text'
+import rehypePrettyCode from 'rehype-pretty-code'
 
 const postsDirectory = path.join(process.cwd(), 'data', 'md')
 
@@ -154,9 +156,17 @@ export async function getPostData(slug, locale = 'en') {
     content = content.replace(frontMatterRegex, '');
   }
 
-  // Use remark to convert markdown into HTML string
+  // Use remark to convert markdown into HTML string with syntax highlighting
   const processedContent = await remark()
-    .use(html)
+    .use(remarkHighlightText)
+    .use(remarkRehype)
+    .use(rehypeHighlightToMark)
+    .use(rehypePrettyCode, {
+      theme: 'github-dark',
+      keepBackground: false,
+      grid: false,
+    })
+    .use(rehypeStringify)
     .process(content);
   const contentHtml = processedContent.toString();
 
