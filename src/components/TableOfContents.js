@@ -128,6 +128,8 @@ export default function TableOfContents({ headings }) {
                         block: 'start'
                       })
                       window.history.pushState(null, '', `#${heading.id}`)
+                      // 移除焦点以避免 hover 和 active 状态叠加
+                      e.currentTarget.blur()
                     }
                   }}
                 >

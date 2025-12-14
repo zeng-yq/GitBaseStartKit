@@ -171,18 +171,25 @@ html {
   box-shadow: inset 0 0 0 2px rgb(96, 165, 250); /* blue-400 */
 }
 
-/* 活跃状态样式 */
+/* 活跃状态样式 - 使用和悬停一样的样式 */
 .toc-active .toc-link {
-  color: rgb(37, 99, 235); /* blue-500 */
+  color: rgb(37, 99, 235); /* blue-500 - 同悬停颜色 */
   font-weight: 600;
-  border-left: 3px solid rgb(37, 99, 235); /* blue-500 */
-  padding-left: 12px;
+  background-color: rgb(243, 244, 246); /* gray-100 - 同悬停背景色 */
+  /* 焦点可见性 - 使用 inset box-shadow 避免被容器截断 */
+  box-shadow: inset 0 0 0 2px rgb(37, 99, 235); /* blue-500 */
 }
 
 /* 暗色模式下的活跃状态样式 */
 .dark .toc-active .toc-link {
-  color: rgb(96, 165, 250); /* blue-400 */
-  border-left-color: rgb(96, 165, 250); /* blue-400 */
+  color: rgb(96, 165, 250); /* blue-400 - 同暗色模式悬停颜色 */
+  background-color: rgb(31, 41, 55); /* gray-800 - 同悬停背景色 */
+  box-shadow: inset 0 0 0 2px rgb(96, 165, 250); /* blue-400 */
+}
+
+/* 活跃状态下不显示下划线，避免与hover效果叠加 */
+.toc-active .toc-link:hover {
+  text-decoration: none;
 }
 
 /* 层级缩进 */
