@@ -105,3 +105,116 @@ pre code {
 .prose :not(pre) > code::after {
   content: none;
 }
+
+/*
+  目录（Table of Contents）样式 - SEO 和可访问性优化
+*/
+
+/* 平滑滚动 - 提升用户体验 */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* 为固定导航栏预留空间 */
+}
+
+/* 目录基础样式 */
+.table-of-contents {
+  /* 确保目录不会遮挡主要内容 */
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+/* 屏幕阅读器专用样式 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 目录链接样式 - SEO 友好 */
+.toc-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  /* 确保链接足够大，易于点击 */
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.toc-link:hover,
+.toc-link:focus {
+  color: rgb(37, 99, 235); /* blue-500 */
+  background-color: rgb(243, 244, 246); /* gray-100 */
+  text-decoration: underline;
+  /* 焦点可见性 - 可访问性要求 */
+  outline: 2px solid rgb(37, 99, 235); /* blue-500 */
+  outline-offset: 2px;
+}
+
+/* 暗色模式下的悬停和焦点样式 */
+.dark .toc-link:hover,
+.dark .toc-link:focus {
+  color: rgb(96, 165, 250); /* blue-400 */
+  background-color: rgb(31, 41, 55); /* gray-800 */
+  outline-color: rgb(96, 165, 250); /* blue-400 */
+}
+
+/* 活跃状态样式 */
+.toc-active > .toc-link {
+  color: rgb(37, 99, 235); /* blue-500 */
+  font-weight: 600;
+  border-left: 3px solid rgb(37, 99, 235); /* blue-500 */
+  padding-left: 12px;
+}
+
+/* 暗色模式下的活跃状态样式 */
+.dark .toc-active > .toc-link {
+  color: rgb(96, 165, 250); /* blue-400 */
+  border-left-color: rgb(96, 165, 250); /* blue-400 */
+}
+
+/* 层级缩进 */
+.toc-level-1 { padding-left: 0; }
+.toc-level-2 { padding-left: 1rem; }
+.toc-level-3 { padding-left: 2rem; }
+.toc-level-4 { padding-left: 3rem; }
+.toc-level-5 { padding-left: 4rem; }
+.toc-level-6 { padding-left: 5rem; }
+
+/* 标题锚点样式 - SEO 友好 */
+h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
+  scroll-margin-top: 80px; /* 平滑滚动时预留导航栏空间 */
+  position: relative;
+}
+
+/* 可选：添加悬停时的锚点链接 */
+h1[id]:hover::before,
+h2[id]:hover::before,
+h3[id]:hover::before,
+h4[id]:hover::before,
+h5[id]:hover::before,
+h6[id]:hover::before {
+  content: "#";
+  position: absolute;
+  left: -1.5em;
+  color: rgb(156, 163, 175); /* gray-400 */
+  font-weight: normal;
+  font-size: 0.8em;
+  transition: color 0.2s ease;
+}
+
+/* 暗色模式下的锚点链接样式 */
+.dark h1[id]:hover::before,
+.dark h2[id]:hover::before,
+.dark h3[id]:hover::before,
+.dark h4[id]:hover::before,
+.dark h5[id]:hover::before,
+.dark h6[id]:hover::before {
+  color: rgb(75, 85, 99); /* gray-600 */
+}

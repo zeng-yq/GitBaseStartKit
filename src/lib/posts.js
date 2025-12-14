@@ -5,6 +5,7 @@ import remarkRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
 import { remarkHighlightText, rehypeHighlightToMark } from './remark-highlight-text'
 import rehypePrettyCode from 'rehype-pretty-code'
+import { remarkExtractHeadings } from './remark-extract-headings'
 
 const postsDirectory = path.join(process.cwd(), 'data', 'md')
 
@@ -158,6 +159,7 @@ export async function getPostData(slug, locale = 'en') {
 
   // Use remark to convert markdown into HTML string with syntax highlighting
   const processedContent = await remark()
+    .use(remarkExtractHeadings)
     .use(remarkHighlightText)
     .use(remarkRehype)
     .use(rehypeHighlightToMark)
@@ -170,10 +172,14 @@ export async function getPostData(slug, locale = 'en') {
     .process(content);
   const contentHtml = processedContent.toString();
 
+  // Extract headings from the processed content
+  const headings = processedContent.data.headings || [];
+
   // Combine metadata from articles.json with content from MD file
   return {
     slug,
     contentHtml,
+    headings,
     title: article.title,
     description: article.description,
     date: article.date,
