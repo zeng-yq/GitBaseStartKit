@@ -45,8 +45,8 @@ export default async function Post({ params }) {
   const postsPath = addLocaleToPath('/posts', lang)
 
   return (
-    <div className="container mx-auto px-4 py-12 max-w-7xl">
-      <div className="flex gap-8">
+    <div className="container py-12">
+      <div className="flex gap-8 justify-center">
         {/* Main article content */}
         <article className="flex-1 max-w-3xl">
           {/* Breadcrumb navigation */}
