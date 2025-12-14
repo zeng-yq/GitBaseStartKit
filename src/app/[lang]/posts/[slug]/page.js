@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 async function getCategories() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || ''}/api/categories?type=article`, {
-      cache: 'force-static'
+      cache: 'force-cache'
     });
     if (response.ok) {
       return await response.json();
