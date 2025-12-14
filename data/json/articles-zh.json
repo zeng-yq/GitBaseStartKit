@@ -6,7 +6,8 @@
     "category": null,
     "lastModified": "2025-12-13T14:04:24.812Z",
     "path": "data/md/zh/hello.md",
-    "id": "hello"
+    "id": "hello",
+    "coverImage": null
   },
   {
     "title": "GitBase 中访问管理面板和管理资源",
@@ -15,7 +16,8 @@
     "category": "tutorial",
     "lastModified": "2025-12-13T14:04:24.793Z",
     "path": "data/md/zh/accessing-admin-managing-resources.md",
-    "id": "accessing-admin-managing-resources"
+    "id": "accessing-admin-managing-resources",
+    "coverImage": null
   },
   {
     "title": "GitBase 环境变量配置",
@@ -24,7 +26,8 @@
     "category": null,
     "lastModified": "2025-12-13T14:04:24.797Z",
     "path": "data/md/zh/environment-variables.md",
-    "id": "environment-variables"
+    "id": "environment-variables",
+    "coverImage": null
   },
   {
     "title": "GitBase 安装和部署：分步指南",
@@ -33,7 +36,8 @@
     "category": null,
     "lastModified": "2025-12-13T14:04:24.809Z",
     "path": "data/md/zh/gitbase-install-guide.md",
-    "id": "gitbase-install-guide"
+    "id": "gitbase-install-guide",
+    "coverImage": null
   },
   {
     "title": "GitBase: 动态无数据库网站解决方案",
@@ -42,7 +46,8 @@
     "category": null,
     "lastModified": "2025-12-13T14:04:24.810Z",
     "path": "data/md/zh/gitbase-introduction.md",
-    "id": "gitbase-introduction"
+    "id": "gitbase-introduction",
+    "coverImage": null
   },
   {
     "title": "贡献 GitBase",
@@ -51,7 +56,8 @@
     "category": null,
     "lastModified": "2025-12-13T14:04:24.813Z",
     "path": "data/md/zh/how-to-contributing-to-gitbase.md",
-    "id": "how-to-contributing-to-gitbase"
+    "id": "how-to-contributing-to-gitbase",
+    "coverImage": null
   },
   {
     "title": "GitBase 管理面板中的文章管理",
@@ -60,6 +66,7 @@
     "category": null,
     "lastModified": "2025-12-13T14:04:24.815Z",
     "path": "data/md/zh/managing-articles.md",
-    "id": "managing-articles"
+    "id": "managing-articles",
+    "coverImage": null
   }
 ]

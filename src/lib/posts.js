@@ -56,6 +56,7 @@ export function getSortedPostsData(locale = 'en') {
       description: article.description,
       date: article.date,
       category: article.category,
+      coverImage: article.coverImage || null,  // 添加 coverImage 字段
       deleted: article.deleted === true,
       fileExists,
       path: article.path,

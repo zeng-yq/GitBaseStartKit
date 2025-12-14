@@ -41,25 +41,26 @@ export default function ArticleList({ articles, showMoreLink = true, locale }) {
         )}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {articles.map(({ id, title, description, category, date }) => (
+        {articles.map(({ id, title, description, category, date, coverImage }) => (
           <Link key={id} href={getLocalizedPath(`/posts/${id}`)} className="group">
             <Card className="h-full flex flex-col hover:shadow-lg transition-all duration-300 overflow-hidden">
               {/* 封面图区域 */}
               <div className="relative aspect-video overflow-hidden bg-gray-100">
                 <img
-                  src={`/images/articles/${id}-cover.jpg`}
+                  src={coverImage ? `/images/articles/${coverImage}` : `/images/articles/${id}-cover.jpg`}
                   alt={title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
-                  style={{
-                    backgroundImage: `url('/images/default-article-cover.svg')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  }}
                   onError={(e) => {
-                    // 如果图片加载失败，显示默认封面
-                    e.target.src = '/images/default-article-cover.svg';
-                    e.target.onerror = null; // 防止无限循环
+                    // 自定义封面失败 → 默认封面
+                    if (coverImage) {
+                      e.target.src = `/images/articles/${id}-cover.jpg`;
+                    }
+                    // 默认封面也失败 → 占位图
+                    else {
+                      e.target.src = '/images/default-article-cover.svg';
+                      e.target.onerror = null; // 防止无限循环
+                    }
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

@@ -6,7 +6,8 @@
     "category": "tutorial",
     "lastModified": "2025-12-13T14:04:24.793Z",
     "path": "data/md/en/accessing-admin-managing-resources.md",
-    "id": "accessing-admin-managing-resources"
+    "id": "accessing-admin-managing-resources",
+    "coverImage": "compare-two-sheet-side-by-side.png"
   },
   {
     "title": "Configuring Environment Variables for GitBase",
@@ -15,7 +16,8 @@
     "category": null,
     "lastModified": "2025-12-13T14:04:24.797Z",
     "path": "data/md/en/environment-variables.md",
-    "id": "environment-variables"
+    "id": "environment-variables",
+    "coverImage": null
   },
   {
     "title": "Installing and Deploying GitBase: A Step-by-Step Guide",
@@ -24,7 +26,8 @@
     "category": null,
     "lastModified": "2025-12-13T14:04:24.809Z",
     "path": "data/md/en/gitbase-install-guide.md",
-    "id": "gitbase-install-guide"
+    "id": "gitbase-install-guide",
+    "coverImage": null
   },
   {
     "title": "GitBase: A Dynamic, Database-Free Website Solution",
@@ -33,7 +36,8 @@
     "category": null,
     "lastModified": "2025-12-13T14:04:24.810Z",
     "path": "data/md/en/gitbase-introduction.md",
-    "id": "gitbase-introduction"
+    "id": "gitbase-introduction",
+    "coverImage": null
   },
   {
     "title": "Contributing to GitBase",
@@ -42,7 +46,8 @@
     "category": null,
     "lastModified": "2025-12-13T14:04:24.813Z",
     "path": "data/md/en/how-to-contributing-to-gitbase.md",
-    "id": "how-to-contributing-to-gitbase"
+    "id": "how-to-contributing-to-gitbase",
+    "coverImage": null
   },
   {
     "title": "Managing Articles in GitBase Admin Panel",
@@ -51,6 +56,7 @@
     "category": null,
     "lastModified": "2025-12-13T14:04:24.815Z",
     "path": "data/md/en/managing-articles.md",
-    "id": "managing-articles"
+    "id": "managing-articles",
+    "coverImage": null
   }
 ]

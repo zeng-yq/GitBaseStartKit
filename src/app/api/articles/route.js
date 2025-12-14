@@ -75,6 +75,7 @@ export async function GET(request) {
             description: article?.description || '',
             date: article?.date || '',
             category: article?.category || null,
+            coverImage: article?.coverImage || null,
             content: content,
             path: pathParam,
             language: articleLocale
@@ -134,7 +135,7 @@ export async function GET(request) {
 
 export async function POST(request) {
   try {
-    const { title, description, date, category, content, path: inputArticlePath, language = 'en' } = await request.json();
+    const { title, description, date, category, coverImage, content, path: inputArticlePath, language = 'en' } = await request.json();
 
     if (!owner || !repo) {
       // Use local file system
@@ -171,6 +172,7 @@ export async function POST(request) {
         description,
         date,
         category: category || null,
+        coverImage: coverImage || null,
         path: articlePath,
         deleted: false,
         lastModified: new Date().toISOString()
