@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
 export default async function Post({ params }) {
   const { slug } = await params;
   const postData = await getPostData(slug);
-  
+
   return (
     <article className="container mx-auto px-4 py-12 max-w-3xl">
       {/* Breadcrumb navigation */}
@@ -25,23 +25,26 @@ export default async function Post({ params }) {
         <ChevronRight className="mx-2" size={16} />
         <span className="text-gray-900">{postData.title}</span>
       </nav>
-      
-      {/* Meta information card */}
-      <div className="bg-gray-100 rounded-lg p-6 mb-8">
+
+      {/* Article meta information below breadcrumb */}
+      <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-8">
         {postData.date && (
-          <p className="text-gray-600 mb-2">{new Date(postData.date).toLocaleDateString()}</p>
+          <time>{new Date(postData.date).toLocaleDateString()}</time>
         )}
-        {postData.description && (
-          <p className="text-gray-800">{postData.description}</p>
+        {postData.category && (
+          <>
+            <span>•</span>
+            <span className="font-medium">{postData.category}</span>
+          </>
         )}
       </div>
-      
+
       {/* Article content */}
-      <div 
+      <div
         className="prose prose-lg max-w-none"
-        dangerouslySetInnerHTML={{ __html: postData.contentHtml }} 
+        dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
       />
-      
+
       {/* Back to articles link */}
       <div className="mt-12">
         <Link href="/posts" className="text-blue-600 hover:text-blue-800 transition-colors inline-flex items-center gap-2">

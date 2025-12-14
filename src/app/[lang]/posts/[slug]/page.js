@@ -3,10 +3,25 @@ import Link from 'next/link'
 import { ArrowLeft, ChevronRight } from 'lucide-react'
 import { getDictionary } from '@/lib/get-dictionary'
 import { i18n, addLocaleToPath } from '@/lib/i18n-config'
+import CategoryBadge from '@/components/CategoryBadge'
 
 export async function generateStaticParams() {
   // This would need to be populated with actual slugs
   return []
+}
+
+async function getCategories() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || ''}/api/categories?type=article`, {
+      cache: 'force-static'
+    });
+    if (response.ok) {
+      return await response.json();
+    }
+  } catch (error) {
+    console.error('Failed to fetch categories:', error);
+  }
+  return [];
 }
 
 export async function generateMetadata({ params }) {
@@ -22,6 +37,7 @@ export default async function Post({ params }) {
   const { slug, lang } = await params
   const dict = await getDictionary(lang)
   const postData = await getPostData(slug, lang)
+  const categories = await getCategories()
 
   const homePath = addLocaleToPath('/', lang)
   const postsPath = addLocaleToPath('/posts', lang)
@@ -37,17 +53,17 @@ export default async function Post({ params }) {
         <span className="text-gray-900">{postData.title}</span>
       </nav>
 
-      {/* Meta information card */}
-      <div className="bg-gray-100 rounded-lg p-6 mb-8">
+      {/* Article meta information below breadcrumb */}
+      <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-8">
         {postData.date && (
-          <p className="text-gray-600 mb-2">{new Date(postData.date).toLocaleDateString()}</p>
+          <time>{new Date(postData.date).toLocaleDateString()}</time>
         )}
-        {postData.description && (
-          <p className="text-gray-800">{postData.description}</p>
+        {postData.category && (
+          <>
+            <span>•</span>
+            <CategoryBadge category={postData.category} categories={categories} />
+          </>
         )}
-        <div className="mt-2 text-sm text-gray-500">
-          Language: {i18n.localeNames[postData.language] || postData.language}
-        </div>
       </div>
 
       {/* Article content */}
