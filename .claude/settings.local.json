@@ -57,7 +57,8 @@
       "Bash(echo:*)",
       "Bash(git add:*)",
       "Bash(git diff:*)",
-      "Bash(npm start:*)"
+      "Bash(npm start:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
