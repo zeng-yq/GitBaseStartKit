@@ -1,6 +1,17 @@
 # Accessing the Admin Panel and Managing Resources in GitBase
 
-GitBase provides a user-friendly admin interface for managing your website's resources. This guide will walk you through the process of accessing the admin panel and managing your resources effectively.
+GitBase provides a user-friendly admin interface for managing your website's resources. This guide will walk you through the process of accessing the admin panel and managing your resources ==effectively==.
+
+==士大夫大师傅==
+
+```cpp
+include <iostream>
+using namespace std;
+int main() {
+   cout << "Hello, World!" << endl;
+   return 0;
+}
+```
 
 ## Accessing the Admin Panel
 

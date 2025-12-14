@@ -8,5 +8,14 @@
     "path": "data/md/zh/accessing-admin-managing-resources.md",
     "id": "accessing-admin-managing-resources",
     "coverImage": "compare-two-sheet-side-by-side.png"
+  },
+  {
+    "title": "Markdown 渲染测试",
+    "description": "测试行内代码和高亮语法的渲染效果",
+    "date": "2025-12-14T00:00:00.000Z",
+    "category": "test",
+    "lastModified": "2025-12-14T00:00:00.000Z",
+    "path": "data/md/zh/markdown-rendering-test.md",
+    "id": "markdown-rendering-test"
   }
 ]

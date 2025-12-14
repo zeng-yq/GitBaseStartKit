@@ -74,3 +74,34 @@
     @apply bg-background text-foreground;
   }
 }
+
+/*
+  Markdown 内容样式
+*/
+
+/* 高亮文本样式 - 用于 ==文本== 语法 */
+.highlight-mark {
+  @apply bg-yellow-100 dark:bg-yellow-900/30 text-gray-900 dark:text-gray-100 px-1 rounded;
+}
+
+/* 代码块样式 - 由 rehype-pretty-code 生成的容器 */
+pre {
+  @apply bg-gray-100 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto my-4 border border-gray-200 dark:border-gray-700;
+}
+
+/* 代码块中的代码样式 */
+pre code {
+  @apply text-sm leading-relaxed;
+}
+
+/* 行内代码样式 - 用于 `代码` 语法 */
+.prose :not(pre) > code {
+  @apply bg-gray-100 dark:bg-gray-800 text-pink-600 dark:text-pink-400 px-1.5 py-0.5 rounded text-sm;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+/* 隐藏 Tailwind Typography 添加的反引号 */
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: none;
+}
