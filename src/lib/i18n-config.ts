@@ -1,15 +1,13 @@
 export const i18n = {
   defaultLocale: 'en',
-  locales: ['en', 'zh', 'ja'],
+  locales: ['en', 'zh'],
   localeNames: {
     en: 'English',
     zh: '中文',
-    ja: '日本語',
   },
   localeFlags: {
     en: '🇺🇸',
     zh: '🇨🇳',
-    ja: '🇯🇵',
   }
 } as const
 

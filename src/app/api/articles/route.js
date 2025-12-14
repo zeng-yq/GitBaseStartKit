@@ -19,7 +19,6 @@ const localJsonDir = path.join(process.cwd(), 'data', 'json');
 function getLanguageFromPath(filePath) {
   if (filePath.includes('/en/')) return 'en';
   if (filePath.includes('/zh/')) return 'zh';
-  if (filePath.includes('/ja/')) return 'ja';
   return 'en'; // default
 }
 
@@ -96,7 +95,7 @@ export async function GET(request) {
       const allArticles = [];
 
       // Read articles from all language files
-      const languages = ['en', 'zh', 'ja'];
+      const languages = ['en', 'zh'];
       for (const lang of languages) {
         const articles = readArticlesForLanguage(lang);
 

@@ -7,7 +7,7 @@ GitBase 现在支持多语言国际化，使用**子目录路由**方式区分�
 ### 核心特性
 
 ✅ **默认英文在根路径** - 英文内容直接在 `/` 访问
-✅ **其他语言使用子目录** - 中文 `/zh`，日文 `/ja`
+✅ **其他语言使用子目录** - 中文 `/zh`
 ✅ **自动重定向** - `/en` 自动 301 重定向到 `/`
 ✅ **语言切换器** - 导航栏内置语言切换组件
 ✅ **路由保留** - 切换语言时保持当前页面路径
@@ -35,16 +35,6 @@ GitBase 现在支持多语言国际化，使用**子目录路由**方式区分�
 /zh/resources        → 资源列表（中文）
 /zh/admin            → 管理后台（中文）
 /zh/login            → 登录页面（中文）
-```
-
-### 日文
-```
-/ja                  → 首页（日文）
-/ja/posts            → 文章列表（日文）
-/ja/posts/[slug]     → 文章详情（日文）
-/ja/resources        → 资源列表（日文）
-/ja/admin            → 管理后台（日文）
-/ja/login            → 登录页面（日文）
 ```
 
 ---
@@ -76,16 +66,14 @@ GitBase 现在支持多语言国际化，使用**子目录路由**方式区分�
 ```typescript
 export const i18n = {
   defaultLocale: 'en',              // 默认语言
-  locales: ['en', 'zh', 'ja'],      // 支持的语言列表
+  locales: ['en', 'zh'],            // 支持的语言列表
   localeNames: {
     en: 'English',
     zh: '中文',
-    ja: '日本語',
   },
   localeFlags: {
     en: '🇺🇸',
     zh: '🇨🇳',
-    ja: '🇯🇵',
   }
 }
 ```
@@ -104,8 +92,7 @@ export const i18n = {
 ```
 src/dictionaries/
 ├── en.json          # 英文翻译
-├── zh.json          # 中文翻译
-└── ja.json          # 日文翻译
+└── zh.json          # 中文翻译
 ```
 
 ### 翻译文件格式
@@ -229,7 +216,6 @@ import LanguageSwitcher from '@/components/LanguageSwitcher'
 
 ```typescript
 getLocaleFromPath('/zh/posts')      // 'zh'
-getLocaleFromPath('/ja/admin')      // 'ja'
 getLocaleFromPath('/posts')         // null (默认语言)
 ```
 
@@ -239,7 +225,6 @@ getLocaleFromPath('/posts')         // null (默认语言)
 
 ```typescript
 removeLocaleFromPath('/zh/posts')   // '/posts'
-removeLocaleFromPath('/ja/admin')   // '/admin'
 removeLocaleFromPath('/posts')      // '/posts'
 ```
 
@@ -249,7 +234,6 @@ removeLocaleFromPath('/posts')      // '/posts'
 
 ```typescript
 addLocaleToPath('/posts', 'zh')     // '/zh/posts'
-addLocaleToPath('/posts', 'ja')     // '/ja/posts'
 addLocaleToPath('/posts', 'en')     // '/posts' (默认语言不添加)
 ```
 
@@ -275,17 +259,15 @@ addLocaleToPath('/posts', 'en')     // '/posts' (默认语言不添加)
 ```typescript
 export const i18n = {
   defaultLocale: 'en',
-  locales: ['en', 'zh', 'ja', 'es'],  // ← 添加 'es'
+  locales: ['en', 'zh', 'es'],  // ← 添加 'es'
   localeNames: {
     en: 'English',
     zh: '中文',
-    ja: '日本語',
     es: 'Español',  // ← 添加西班牙语
   },
   localeFlags: {
     en: '🇺🇸',
     zh: '🇨🇳',
-    ja: '🇯🇵',
     es: '🇪🇸',  // ← 添加国旗
   }
 }
@@ -314,7 +296,6 @@ export const i18n = {
 const dictionaries = {
   en: () => import('@/dictionaries/en.json').then((module) => module.default),
   zh: () => import('@/dictionaries/zh.json').then((module) => module.default),
-  ja: () => import('@/dictionaries/ja.json').then((module) => module.default),
   es: () => import('@/dictionaries/es.json').then((module) => module.default),  // ← 添加
 }
 ```
@@ -386,7 +367,6 @@ export const TRANSLATION_KEYS = {
 ```html
 <link rel="alternate" hreflang="en" href="https://example.com/" />
 <link rel="alternate" hreflang="zh" href="https://example.com/zh" />
-<link rel="alternate" hreflang="ja" href="https://example.com/ja" />
 <link rel="alternate" hreflang="x-default" href="https://example.com/" />
 ```
 
@@ -398,7 +378,6 @@ export const TRANSLATION_KEYS = {
 <url>
   <loc>https://example.com/</loc>
   <xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh"/>
-  <xhtml:link rel="alternate" hreflang="ja" href="https://example.com/ja"/>
 </url>
 ```
 
@@ -444,8 +423,7 @@ src/
 │   └── get-dictionary.ts       # 翻译加载器
 ├── dictionaries/
 │   ├── en.json                 # 英文翻译
-│   ├── zh.json                 # 中文翻译
-│   └── ja.json                 # 日文翻译
+│   └── zh.json                 # 中文翻译
 ├── components/
 │   ├── LanguageSwitcher.tsx    # 语言切换器
 │   └── Navigation.js           # 导航栏（集成语言切换）

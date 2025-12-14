@@ -10,12 +10,10 @@ import { X, Globe } from 'lucide-react'
 // Import all dictionaries for client-side use
 import enDict from '@/dictionaries/en.json'
 import zhDict from '@/dictionaries/zh.json'
-import jaDict from '@/dictionaries/ja.json'
 
 const dictionaries = {
   en: enDict,
   zh: zhDict,
-  ja: jaDict,
 }
 
 interface LanguageSuggestionProps {

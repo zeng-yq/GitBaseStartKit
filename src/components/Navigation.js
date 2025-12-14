@@ -23,13 +23,6 @@ const navigationText = {
     articles: '文章',
     admin: '管理',
     logout: '登出'
-  },
-  ja: {
-    home: 'ホーム',
-    resources: 'リソース',
-    articles: '記事',
-    admin: '管理',
-    logout: 'ログアウト'
   }
 }
 

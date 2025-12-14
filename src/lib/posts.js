@@ -109,7 +109,7 @@ export async function getPostData(slug, locale = 'en') {
   // 如果在语言特定文件中没找到，尝试从其他语言文件中查找
   if (!article) {
     // 尝试从其他语言文件中查找
-    const otherLanguages = ['en', 'zh', 'ja'].filter(lang => lang !== locale);
+    const otherLanguages = ['en', 'zh'].filter(lang => lang !== locale);
 
     for (const lang of otherLanguages) {
       try {

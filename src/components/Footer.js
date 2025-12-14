@@ -28,17 +28,6 @@ const footerText = {
     privacy: "隐私政策",
     terms: "服务条款",
     copyright: "© {year} StartKit. 保留所有权利。"
-  },
-  ja: {
-    description: "StartKitは、従来のデータベースを使用しないオープンソースの動的Webサイトソリューションです。Next.jsで構築され、GitHubによって提供されます。",
-    quickLinks: "クイックリンク",
-    connect: "接続",
-    home: "ホーム",
-    resources: "リソース",
-    articles: "記事",
-    privacy: "プライバシーポリシー",
-    terms: "利用規約",
-    copyright: "© {year} StartKit. すべての権利を保有。"
   }
 };
 
@@ -59,7 +48,7 @@ export function Footer() {
       const potentialLocale = pathSegments[1];
 
       // Check if the first segment is a valid locale
-      if (['en', 'zh', 'ja'].includes(potentialLocale)) {
+      if (['en', 'zh'].includes(potentialLocale)) {
         lang = potentialLocale;
       }
     }
