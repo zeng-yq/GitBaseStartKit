@@ -1,15 +1,5 @@
 [
   {
-    "title": "测试",
-    "description": "hello",
-    "date": "2025-06-29T04:30:40.951Z",
-    "category": null,
-    "lastModified": "2025-12-13T14:04:24.812Z",
-    "path": "data/md/zh/hello.md",
-    "id": "hello",
-    "coverImage": null
-  },
-  {
     "title": "GitBase 中访问管理面板和管理资源",
     "description": "如何访问 GitBase 管理面板和管理您的资源列表",
     "date": "2024-08-11T13:14:40.737Z",
@@ -17,56 +7,6 @@
     "lastModified": "2025-12-13T14:04:24.793Z",
     "path": "data/md/zh/accessing-admin-managing-resources.md",
     "id": "accessing-admin-managing-resources",
-    "coverImage": null
-  },
-  {
-    "title": "GitBase 环境变量配置",
-    "description": "如何配置 GitBase 环境变量",
-    "date": "2024-08-11T13:08:05.474Z",
-    "category": null,
-    "lastModified": "2025-12-13T14:04:24.797Z",
-    "path": "data/md/zh/environment-variables.md",
-    "id": "environment-variables",
-    "coverImage": null
-  },
-  {
-    "title": "GitBase 安装和部署：分步指南",
-    "description": "适合初学者的 GitBase 本地设置和 Vercel 部署综合指南。",
-    "date": "2024-08-11",
-    "category": null,
-    "lastModified": "2025-12-13T14:04:24.809Z",
-    "path": "data/md/zh/gitbase-install-guide.md",
-    "id": "gitbase-install-guide",
-    "coverImage": null
-  },
-  {
-    "title": "GitBase: 动态无数据库网站解决方案",
-    "description": "探索 GitBase 的功能和实现，这是一个结合了 Next.js、Tailwind CSS 和 GitHub API 进行内容管理的创新开源项目。",
-    "date": "2024-08-11",
-    "category": null,
-    "lastModified": "2025-12-13T14:04:24.810Z",
-    "path": "data/md/zh/gitbase-introduction.md",
-    "id": "gitbase-introduction",
-    "coverImage": null
-  },
-  {
-    "title": "贡献 GitBase",
-    "description": "你好！我是 Qiayue，GitBase 的创建者。我很高兴欢迎您加入我们的项目，并期待您为让 GitBase 变得更好而做出的贡献！",
-    "date": "2024-08-16T03:57:46.153Z",
-    "category": null,
-    "lastModified": "2025-12-13T14:04:24.813Z",
-    "path": "data/md/zh/how-to-contributing-to-gitbase.md",
-    "id": "how-to-contributing-to-gitbase",
-    "coverImage": null
-  },
-  {
-    "title": "GitBase 管理面板中的文章管理",
-    "description": "本指南将引导您使用管理面板完成查看、编辑和创建新文章的过程。",
-    "date": "2024-08-11T13:16:44.231Z",
-    "category": null,
-    "lastModified": "2025-12-13T14:04:24.815Z",
-    "path": "data/md/zh/managing-articles.md",
-    "id": "managing-articles",
-    "coverImage": null
+    "coverImage": "compare-two-sheet-side-by-side.png"
   }
 ]

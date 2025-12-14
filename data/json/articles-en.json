@@ -8,55 +8,5 @@
     "path": "data/md/en/accessing-admin-managing-resources.md",
     "id": "accessing-admin-managing-resources",
     "coverImage": "compare-two-sheet-side-by-side.png"
-  },
-  {
-    "title": "Configuring Environment Variables for GitBase",
-    "description": "How to configure GitBase environment variables",
-    "date": "2024-08-11T13:08:05.474Z",
-    "category": null,
-    "lastModified": "2025-12-13T14:04:24.797Z",
-    "path": "data/md/en/environment-variables.md",
-    "id": "environment-variables",
-    "coverImage": null
-  },
-  {
-    "title": "Installing and Deploying GitBase: A Step-by-Step Guide",
-    "description": "A comprehensive guide for setting up GitBase locally and deploying it to Vercel, suitable for beginners.",
-    "date": "2024-08-11",
-    "category": null,
-    "lastModified": "2025-12-13T14:04:24.809Z",
-    "path": "data/md/en/gitbase-install-guide.md",
-    "id": "gitbase-install-guide",
-    "coverImage": null
-  },
-  {
-    "title": "GitBase: A Dynamic, Database-Free Website Solution",
-    "description": "Explore the features and implementation of GitBase, an innovative open-source project that combines Next.js, Tailwind CSS, and GitHub API for content management.",
-    "date": "2024-08-11",
-    "category": null,
-    "lastModified": "2025-12-13T14:04:24.810Z",
-    "path": "data/md/en/gitbase-introduction.md",
-    "id": "gitbase-introduction",
-    "coverImage": null
-  },
-  {
-    "title": "Contributing to GitBase",
-    "description": "Hi, I'm Qiayue, creator of GitBase. I'm excited to welcome you to our project and look forward to your contributions in making GitBase even better!",
-    "date": "2024-08-16T03:57:46.153Z",
-    "category": null,
-    "lastModified": "2025-12-13T14:04:24.813Z",
-    "path": "data/md/en/how-to-contributing-to-gitbase.md",
-    "id": "how-to-contributing-to-gitbase",
-    "coverImage": null
-  },
-  {
-    "title": "Managing Articles in GitBase Admin Panel",
-    "description": "This guide will walk you through the process of viewing, editing, and creating new articles using the admin panel.",
-    "date": "2024-08-11T13:16:44.231Z",
-    "category": null,
-    "lastModified": "2025-12-13T14:04:24.815Z",
-    "path": "data/md/en/managing-articles.md",
-    "id": "managing-articles",
-    "coverImage": null
   }
 ]
