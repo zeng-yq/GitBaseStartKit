@@ -5,7 +5,19 @@ import { ChevronRight } from 'lucide-react'
 
 export default function TableOfContents({ headings }) {
   const [activeId, setActiveId] = useState('')
-  const [collapsedItems, setCollapsedItems] = useState(new Set())
+  const [collapsedItems, setCollapsedItems] = useState(() => {
+    // 初始化时，将所有 H1 和 H2 标题添加到折叠列表中，这样它们会默认展开
+    const initialCollapsed = new Set()
+    headings.forEach((heading, index) => {
+      // 只将有子级的 H1 和 H2 标题加入折叠列表
+      if (heading.level <= 2 && index < headings.length - 1) {
+        if (headings[index + 1].level > heading.level) {
+          initialCollapsed.add(heading.id)
+        }
+      }
+    })
+    return initialCollapsed
+  })
 
   useEffect(() => {
     const observer = new IntersectionObserver(
