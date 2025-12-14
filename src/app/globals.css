@@ -172,7 +172,7 @@ html {
 }
 
 /* 活跃状态样式 */
-.toc-active > .toc-link {
+.toc-active .toc-link {
   color: rgb(37, 99, 235); /* blue-500 */
   font-weight: 600;
   border-left: 3px solid rgb(37, 99, 235); /* blue-500 */
@@ -180,7 +180,7 @@ html {
 }
 
 /* 暗色模式下的活跃状态样式 */
-.dark .toc-active > .toc-link {
+.dark .toc-active .toc-link {
   color: rgb(96, 165, 250); /* blue-400 */
   border-left-color: rgb(96, 165, 250); /* blue-400 */
 }
