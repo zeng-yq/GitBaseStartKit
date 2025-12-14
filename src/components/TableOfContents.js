@@ -6,11 +6,12 @@ import { ChevronRight } from 'lucide-react'
 export default function TableOfContents({ headings }) {
   const [activeId, setActiveId] = useState('')
   const [collapsedItems, setCollapsedItems] = useState(() => {
-    // 初始化时，将所有 H1 和 H2 标题添加到折叠列表中，这样它们会默认展开
+    // 初始化时，将 H3 及以上级别有子级的标题加入折叠列表
+    // 这样默认只显示 H1、H2、H3
     const initialCollapsed = new Set()
     headings.forEach((heading, index) => {
-      // 只将有子级的 H1 和 H2 标题加入折叠列表
-      if (heading.level <= 2 && index < headings.length - 1) {
+      // 折叠 H3 及以上级别的标题
+      if (heading.level >= 3 && index < headings.length - 1) {
         if (headings[index + 1].level > heading.level) {
           initialCollapsed.add(heading.id)
         }
@@ -102,18 +103,17 @@ export default function TableOfContents({ headings }) {
 
   // 检查是否应该隐藏该项目
   const shouldHide = (heading, index) => {
-    // 找到父级
-    let parentIndex = -1
+    // 找到所有父级，检查是否有任何一个被折叠
     for (let i = index - 1; i >= 0; i--) {
-      if (headings[i].level < heading.level) {
-        parentIndex = i
-        break
-      }
-    }
+      const currentHeading = headings[i]
 
-    if (parentIndex >= 0) {
-      const parent = headings[parentIndex]
-      return collapsedItems.has(parent.id)
+      // 如果找到父级标题（层级更小）
+      if (currentHeading.level < heading.level) {
+        // 如果这个父级被折叠，则当前项应该隐藏
+        if (collapsedItems.has(currentHeading.id)) {
+          return true
+        }
+      }
     }
 
     return false
