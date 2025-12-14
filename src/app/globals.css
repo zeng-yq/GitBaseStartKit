@@ -121,6 +121,9 @@ html {
   /* 确保目录不会遮挡主要内容 */
   max-height: calc(100vh - 120px);
   overflow-y: auto;
+  /* 为box-shadow留出空间 */
+  padding: 2px;
+  margin: -2px;
 }
 
 /* 屏幕阅读器专用样式 */
@@ -145,6 +148,10 @@ html {
   /* 确保链接足够大，易于点击 */
   padding: 4px 8px;
   border-radius: 4px;
+  /* 为长标题添加省略号 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .toc-link:hover,
@@ -152,9 +159,8 @@ html {
   color: rgb(37, 99, 235); /* blue-500 */
   background-color: rgb(243, 244, 246); /* gray-100 */
   text-decoration: underline;
-  /* 焦点可见性 - 可访问性要求 */
-  outline: 2px solid rgb(37, 99, 235); /* blue-500 */
-  outline-offset: 2px;
+  /* 焦点可见性 - 可访问性要求，使用 inset box-shadow 避免被容器截断 */
+  box-shadow: inset 0 0 0 2px rgb(37, 99, 235); /* blue-500 */
 }
 
 /* 暗色模式下的悬停和焦点样式 */
@@ -162,7 +168,7 @@ html {
 .dark .toc-link:focus {
   color: rgb(96, 165, 250); /* blue-400 */
   background-color: rgb(31, 41, 55); /* gray-800 */
-  outline-color: rgb(96, 165, 250); /* blue-400 */
+  box-shadow: inset 0 0 0 2px rgb(96, 165, 250); /* blue-400 */
 }
 
 /* 活跃状态样式 */
