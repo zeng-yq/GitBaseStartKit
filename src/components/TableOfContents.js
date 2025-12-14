@@ -30,13 +30,51 @@ export default function TableOfContents({ headings }) {
     return () => observer.disconnect()
   }, [headings])
 
+  // 当活跃状态改变时，自动展开包含活跃项的折叠父级
+  useEffect(() => {
+    if (!activeId) return
+
+    const activeIndex = headings.findIndex(h => h.id === activeId)
+    if (activeIndex === -1) return
+
+    // 找到活跃项的所有父级
+    const parentIds = new Set()
+    for (let i = activeIndex - 1; i >= 0; i--) {
+      const currentHeading = headings[i]
+      const nextHeading = headings[i + 1]
+
+      // 如果下一项层级比当前项大，说明当前项是父级
+      if (nextHeading && nextHeading.level > currentHeading.level) {
+        // 检查这个父级是否包含活跃项
+        let isActiveInThisGroup = false
+        for (let j = i + 1; j < headings.length; j++) {
+          if (headings[j].level <= currentHeading.level) break
+          if (headings[j].id === activeId) {
+            isActiveInThisGroup = true
+            break
+          }
+        }
+        if (isActiveInThisGroup) {
+          parentIds.add(currentHeading.id)
+        }
+      }
+    }
+
+    // 展开所有包含活跃项的父级
+    setCollapsedItems(prev => {
+      const newSet = new Set(prev)
+      parentIds.forEach(id => newSet.delete(id))
+      return newSet
+    })
+  }, [activeId, headings])
+
   // 检查是否有子级
   const hasChildren = (heading, index) => {
     if (index === headings.length - 1) return false
     return headings[index + 1].level > heading.level
   }
 
-  
+
   // 切换折叠状态
   const toggleCollapse = (headingId) => {
     setCollapsedItems(prev => {
