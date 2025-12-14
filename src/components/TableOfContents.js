@@ -114,13 +114,9 @@ export default function TableOfContents({ headings }) {
   return (
     <nav
       role="navigation"
-      aria-labelledby="toc-heading"
+      aria-label="文章目录"
       className="table-of-contents"
     >
-      <h3 id="toc-heading" className="sr-only">文章目录</h3>
-      <div className="toc-title text-sm font-semibold mb-4 text-gray-900 dark:text-gray-100">
-        目录
-      </div>
       <ul className="space-y-1">
         {headings.map((heading, index) => {
           const hasChild = hasChildren(heading, index)
